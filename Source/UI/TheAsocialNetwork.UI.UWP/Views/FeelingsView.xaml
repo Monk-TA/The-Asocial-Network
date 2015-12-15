@@ -1,0 +1,50 @@
+﻿<Page
+    x:Class="TheAsocialNetwork.UI.UWP.Views.FeelingsView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewModels="using:TheAsocialNetwork.UI.UWP.ViewModels"
+    xmlns:convertors="using:TheAsocialNetwork.UI.UWP.Convertors"
+    xmlns:controls="using:TheAsocialNetwork.UI.UWP.Controls"
+    mc:Ignorable="d">
+
+    <Page.Resources>
+        <convertors:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+        <convertors:InverseBooleanToVisibilityConverter x:Key="InverseBooleanToVisibilityConverter"/>
+    </Page.Resources>
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+          EntranceNavigationTransitionInfo.IsTargetElement="True">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <controls:PageHeader
+            Grid.Row="0">
+            <controls:PageHeader.HeaderContent>
+                <TextBlock x:Name="title" 
+                           Style="{ThemeResource PageTitleTextBlockStyle}" 
+                           Text="MY FEELINGS"/>
+            </controls:PageHeader.HeaderContent>
+        </controls:PageHeader>
+
+        <!--<ListView Grid.Row="1" Header="Click An Item To Drill In"
+                  EntranceNavigationTransitionInfo.IsTargetElement="True"
+                  IsItemClickEnabled="True"
+                  ItemClick="ListView_ItemClick">
+            <ListView.HeaderTemplate>
+                <DataTemplate>
+                    <TextBlock Style="{ThemeResource BodyTextBlockStyle}" Margin="12,4" Text="{Binding}"/>
+                </DataTemplate>
+            </ListView.HeaderTemplate>
+            <ListViewItem>Item 1</ListViewItem>
+            <ListViewItem>Item 2</ListViewItem>
+            <ListViewItem>Item 3</ListViewItem>
+            <ListViewItem>Item 4</ListViewItem>
+            <ListViewItem>Item 5</ListViewItem>
+        </ListView>-->
+
+    </Grid>
+</Page>
