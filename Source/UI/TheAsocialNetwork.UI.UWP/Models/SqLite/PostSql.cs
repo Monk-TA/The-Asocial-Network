@@ -1,0 +1,34 @@
+﻿namespace TheAsocialNetwork.UI.UWP.Models.SqLite
+{
+    using System;
+    using SQLite.Net.Attributes;
+    using TheAsocialNetwork.UI.UWP.Models.Parse;
+
+    [Table("Posts")]
+    public class PostSql
+    {
+        [PrimaryKey]
+        [AutoIncrement]
+        public int Id { get; set; }
+
+        public string ObjectId { get; set; }
+
+        public DateTime? CreatedAt { get; set; }
+
+        public DateTime? UpdatedAt { get; set; }
+
+        public string Title { get; set; }
+
+        public string Content { get; set; }
+
+        public string Category { get; set; }
+
+        public ImageParse Image { get; set; }
+
+        public VideoSql Video { get; set; }
+
+        public LocationSql Location { get; set; }
+
+        public bool IsBest { get; set; }
+    }
+}

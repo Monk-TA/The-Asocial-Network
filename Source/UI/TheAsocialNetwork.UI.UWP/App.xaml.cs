@@ -7,6 +7,10 @@
     using Windows.UI.Xaml;
     using Windows.UI.Xaml.Navigation;
 
+    using Models;
+    using Parse;
+    using TheAsocialNetwork.UI.UWP.Models.Parse;
+
     /// <summary>
     /// Provides application-specific behavior to supplement the default Application class.
     /// </summary>
@@ -19,7 +23,17 @@
         public App()
         {
             this.InitializeComponent();
-            this.Suspending += OnSuspending;
+            this.Suspending += this.OnSuspending;
+
+            ParseObject.RegisterSubclass<ImageInfoParse>();
+            ParseObject.RegisterSubclass<LocationParse>();
+            ParseObject.RegisterSubclass<AvatarParse>();
+            ParseObject.RegisterSubclass<VideoParse>();
+            ParseObject.RegisterSubclass<ImageParse>();
+            ParseObject.RegisterSubclass<PostParse>();
+            ParseUser.RegisterSubclass<UserParse>();
+
+            ParseClient.Initialize("bDYtk2EzONdRX8bmH47R58R1jNmrcaQW0lXoJNpu", "ckfGVINo8UNIWJ5CRpC0jgzpL38AWnEayXbIwp4S");
         }
 
         /// <summary>

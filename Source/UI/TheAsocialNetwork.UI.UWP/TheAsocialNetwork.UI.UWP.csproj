@@ -110,12 +110,32 @@
     <Compile Include="Convertors\InverseBooleanToVisibilityConverter.cs" />
     <Compile Include="Convertors\ReverseRotationConverter.cs" />
     <Compile Include="Helpers\Geolocator\GeoLocatorHelper.cs" />
+    <Compile Include="Helpers\SqLite\SqLiteConnectionHelper.cs" />
     <Compile Include="Helpers\ToastNotifications\ToastCrerator.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Models\Parse\AvatarParse.cs" />
+    <Compile Include="Models\Category.cs" />
+    <Compile Include="Models\Parse\ImageParse.cs" />
+    <Compile Include="Models\Parse\ImageInfoParse.cs" />
+    <Compile Include="Models\Parse\LocationParse.cs" />
+    <Compile Include="Models\Parse\PostParse.cs" />
+    <Compile Include="Models\Parse\UserParse.cs" />
+    <Compile Include="Models\Parse\VideoParse.cs" />
+    <Compile Include="Models\SqLite\AvatarSql.cs" />
+    <Compile Include="Models\SqLite\ImageSql.cs" />
+    <Compile Include="Models\SqLite\ImageInfoSql.cs" />
+    <Compile Include="Models\SqLite\LocationSql.cs" />
+    <Compile Include="Models\SqLite\PostSql.cs" />
+    <Compile Include="Models\SqLite\UserSql.cs" />
+    <Compile Include="Models\SqLite\VideoSql.cs" />
     <Compile Include="NavMenuItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\Data\Parse\ParseAuthenticationService.cs" />
+    <Compile Include="Services\Data\Parse\ParsePostsService.cs" />
+    <Compile Include="Services\Data\Parse\ParseUserService.cs" />
+    <Compile Include="ViewModels\AccountViewModel.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="Views\BasicSubPage.xaml.cs">
       <DependentUpon>BasicSubPage.xaml</DependentUpon>
@@ -235,13 +255,31 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Helpers\Parse\" />
     <Folder Include="Resources\Templates\" />
+    <Folder Include="Services\Data\SqLite\" />
+    <Folder Include="Services\Logic\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\TheAsocialNetwork.Common\TheAsocialNetwork.Common.csproj">
       <Project>{585dc1ad-23fd-4d0c-a9a7-9abc1b54ae13}</Project>
       <Name>TheAsocialNetwork.Common</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <SDKReference Include="SQLite.UAP.2015, Version=3.9.2">
+      <Name>SQLite for Universal App Platform</Name>
+    </SDKReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Parse, Version=1.6.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\libs\Parse.dll</HintPath>
+    </Reference>
+    <Reference Include="Parse.WinRT, Version=1.6.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\libs\Parse.WinRT.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>

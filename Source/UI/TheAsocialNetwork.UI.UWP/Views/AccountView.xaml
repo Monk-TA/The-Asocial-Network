@@ -14,6 +14,8 @@
                 <TextBlock x:Name="title" Style="{ThemeResource PageTitleTextBlockStyle}" Text="MY ACCOUNT"/>
             </controls:PageHeader.HeaderContent>
         </controls:PageHeader>
+        
+        <Button Content="Click me" Click="ButtonBase_OnClick" HorizontalAlignment="Stretch"></Button>
 
     </Grid>
 </Page>
