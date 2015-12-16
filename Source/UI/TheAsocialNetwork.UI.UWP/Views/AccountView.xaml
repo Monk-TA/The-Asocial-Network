@@ -9,13 +9,19 @@
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
           EntranceNavigationTransitionInfo.IsTargetElement="True">
-        <controls:PageHeader>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <controls:PageHeader Grid.Row="0">
             <controls:PageHeader.HeaderContent>
                 <TextBlock x:Name="title" Style="{ThemeResource PageTitleTextBlockStyle}" Text="MY ACCOUNT"/>
             </controls:PageHeader.HeaderContent>
         </controls:PageHeader>
         
-        <Button Content="Click me" Click="ButtonBase_OnClick" HorizontalAlignment="Stretch"></Button>
-
+        <StackPanel Grid.Row="1">
+            <Button Content="Click me" Click="ButtonBase_OnClick" HorizontalAlignment="Stretch"></Button>
+            <Button Content="Click me to Light" Click="ButtonBase_OnClick2" HorizontalAlignment="Stretch"></Button>
+        </StackPanel>
     </Grid>
 </Page>

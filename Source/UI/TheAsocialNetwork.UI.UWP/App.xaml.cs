@@ -10,6 +10,8 @@
     using Models;
     using Parse;
     using TheAsocialNetwork.UI.UWP.Models.Parse;
+    using TheAsocialNetwork.UI.UWP.Models.SqLite;
+    using TheAsocialNetwork.UI.UWP.Services.Data.SqLite;
 
     /// <summary>
     /// Provides application-specific behavior to supplement the default Application class.
@@ -25,6 +27,12 @@
             this.InitializeComponent();
             this.Suspending += this.OnSuspending;
 
+            this.InitParse();
+            this.InitSqLite();
+        }
+
+        private void InitParse()
+        {
             ParseObject.RegisterSubclass<ImageInfoParse>();
             ParseObject.RegisterSubclass<LocationParse>();
             ParseObject.RegisterSubclass<AvatarParse>();
@@ -34,6 +42,20 @@
             ParseUser.RegisterSubclass<UserParse>();
 
             ParseClient.Initialize("bDYtk2EzONdRX8bmH47R58R1jNmrcaQW0lXoJNpu", "ckfGVINo8UNIWJ5CRpC0jgzpL38AWnEayXbIwp4S");
+        }
+
+        private async void InitSqLite()
+        {
+            var sqliteService = new SqlConnectionService();
+
+            var connection = sqliteService.GetDbConnectionAsync();
+            await connection.CreateTableAsync<ImageInfoSql>();
+            await connection.CreateTableAsync<ImageSql>();
+            await connection.CreateTableAsync<AvatarSql>();
+            await connection.CreateTableAsync<LocationSql>();
+            await connection.CreateTableAsync<VideoSql>();
+            await connection.CreateTableAsync<PostSql>();
+            await connection.CreateTableAsync<UserSql>();
         }
 
         /// <summary>

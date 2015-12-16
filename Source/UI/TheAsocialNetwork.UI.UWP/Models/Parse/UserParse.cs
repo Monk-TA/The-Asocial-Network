@@ -12,6 +12,13 @@
            // this.Posts = new List<PostParse>();
         }
 
+        [ParseFieldName("Avatar")]
+        public AvatarParse Avatar
+        {
+            get { return this.GetProperty<AvatarParse>(); }
+            set { this.SetProperty<AvatarParse>(value); }
+        }
+
         [ParseFieldName("Posts")]
         public List<PostParse> Posts
         {

@@ -7,17 +7,16 @@
     [Table("Users")]
     public class UserSql
     {
-        private IEnumerable<PostSql> posts;
+        private ICollection<PostSql> posts;
 
         public UserSql()
         {
-            this.posts = new HashSet<PostSql>();
+            this.posts = new List<PostSql>();
         }
 
         [PrimaryKey]
         [AutoIncrement]
         public int Id { get; set; }
-
 
         public string ObjectId { get; set; }
 
@@ -25,6 +24,18 @@
 
         public DateTime? UpdatedAt { get; set; }
 
-        public IEnumerable<PostSql> Posts { get; set; }
+        public string Username { get; set; }
+
+        public string Password { get; set; }
+
+        public string Email { get; set; }
+
+        public AvatarSql Avatar { get; set; }
+
+        public ICollection<PostSql> Posts
+        {
+            get { return this.posts; }
+            set { this.posts = value; }
+        }
     }
 }

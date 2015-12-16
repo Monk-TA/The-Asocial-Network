@@ -135,6 +135,8 @@
     <Compile Include="Services\Data\Parse\ParseAuthenticationService.cs" />
     <Compile Include="Services\Data\Parse\ParsePostsService.cs" />
     <Compile Include="Services\Data\Parse\ParseUserService.cs" />
+    <Compile Include="Services\Data\SqLite\SqlConnectionService.cs" />
+    <Compile Include="Services\Data\SqLite\SqLitePostsService.cs" />
     <Compile Include="ViewModels\AccountViewModel.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="Views\BasicSubPage.xaml.cs">
@@ -257,7 +259,6 @@
   <ItemGroup>
     <Folder Include="Helpers\Parse\" />
     <Folder Include="Resources\Templates\" />
-    <Folder Include="Services\Data\SqLite\" />
     <Folder Include="Services\Logic\" />
   </ItemGroup>
   <ItemGroup>

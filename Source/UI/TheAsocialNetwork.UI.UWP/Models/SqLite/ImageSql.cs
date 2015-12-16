@@ -19,6 +19,7 @@
 
         public string Description{get;set;}
 
-        public ImageInfoSql ImagePath {get;set;}
+        [ForeingKey]
+        public ImageInfoSql ImageInfo {get;set;}
     }
 }
