@@ -3,17 +3,11 @@
     using System;
     using System.Collections.Generic;
     using SQLite.Net.Attributes;
+    using SQLiteNetExtensions.Attributes;
 
     [Table("Users")]
     public class UserSql
     {
-        private ICollection<PostSql> posts;
-
-        public UserSql()
-        {
-            this.posts = new List<PostSql>();
-        }
-
         [PrimaryKey]
         [AutoIncrement]
         public int Id { get; set; }
@@ -30,12 +24,13 @@
 
         public string Email { get; set; }
 
+        [ForeignKey(typeof(AvatarSql))]
+        public int AvatarId { get; set; }
+
+        [OneToOne]
         public AvatarSql Avatar { get; set; }
 
-        public ICollection<PostSql> Posts
-        {
-            get { return this.posts; }
-            set { this.posts = value; }
-        }
+        [OneToMany]
+        public List<PostSql> Posts { get; set; }
     }
 }

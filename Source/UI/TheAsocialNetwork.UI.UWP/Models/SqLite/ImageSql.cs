@@ -2,6 +2,7 @@
 {
     using System;
     using SQLite.Net.Attributes;
+    using SQLiteNetExtensions.Attributes;
 
     public class ImageSql
     {
@@ -19,7 +20,13 @@
 
         public string Description{get;set;}
 
-        [ForeingKey]
+        [ForeignKey(typeof(PostSql))]
+        public int PostId { get; set; }
+
+        [ForeignKey(typeof(ImageInfoSql))]
+        public int ImageInfoId { get; set; }
+
+        [OneToOne]
         public ImageInfoSql ImageInfo {get;set;}
     }
 }

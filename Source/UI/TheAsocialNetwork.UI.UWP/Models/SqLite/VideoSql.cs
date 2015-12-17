@@ -2,6 +2,7 @@
 {
     using System;
     using SQLite.Net.Attributes;
+    using SQLiteNetExtensions.Attributes;
 
     [Table("Videos")]
     public class VideoSql
@@ -23,5 +24,8 @@
         public string Description { get; set; }
 
         public string VideoUrl { get; set; }
+
+        [ForeignKey(typeof(PostSql))]
+        public int PostId { get; set; }
     }
 }

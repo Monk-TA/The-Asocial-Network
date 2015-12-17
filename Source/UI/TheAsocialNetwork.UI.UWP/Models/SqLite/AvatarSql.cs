@@ -2,6 +2,7 @@
 {
     using System;
     using SQLite.Net.Attributes;
+    using SQLiteNetExtensions.Attributes;
 
     public class AvatarSql
     {
@@ -15,6 +16,10 @@
 
         public DateTime? UpdatedAt { get; set; }
 
+        [ForeignKey(typeof(ImageInfoSql))]
+        public int ImageInfoId { get; set; }
+
+        [OneToOne]
         public ImageInfoSql ImageInfo { get; set; }
     }
 }
