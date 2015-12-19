@@ -109,6 +109,7 @@
     <Compile Include="Convertors\BooleanToVisibilityConverter.cs" />
     <Compile Include="Convertors\InverseBooleanToVisibilityConverter.cs" />
     <Compile Include="Convertors\ReverseRotationConverter.cs" />
+    <Compile Include="Helpers\Data\SqLiteToParseObjecConvertor.cs" />
     <Compile Include="Helpers\Geolocator\GeoLocatorHelper.cs" />
     <Compile Include="Helpers\SqLite\SqLiteConnectionHelper.cs" />
     <Compile Include="Helpers\ToastNotifications\ToastCrerator.cs" />

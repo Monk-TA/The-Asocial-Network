@@ -11,25 +11,30 @@
     {
         public async Task<string> AddNewPostAsync(PostParse newPost)
         {
-            try
-            {
-                var newAvata = new AvatarParse()
-                {
-                    ImageInfo = new ImageInfoParse()
-                    {
-                        OriginalName = "avatar",
-                        FileExstension = "huc",
-                        ByteArrayContent = new byte[1000]
-                    }
-                };
-
-                //await newPost.SaveAsync();
+            try{
                 var currentUser = (UserParse)ParseUser.CurrentUser;
                 currentUser.AddToList("Posts", newPost);
-                currentUser.Avatar = newAvata;
                 await currentUser.SaveAsync();
 
                 return newPost.ObjectId;
+            }
+            catch (Exception ex)
+            {
+                var msg = ex.Message;
+
+                return null;
+            }
+        }
+
+        public async Task<string> AddNewRangeOfPostAsync(IEnumerable<PostParse> newPosts)
+        {
+            try
+            {
+                var currentUser = (UserParse)ParseUser.CurrentUser;
+                currentUser.AddRangeToList("Posts", newPosts);
+                await currentUser.SaveAsync();
+
+                return "success";
             }
             catch (Exception ex)
             {

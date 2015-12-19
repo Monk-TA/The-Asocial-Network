@@ -5,6 +5,7 @@
     using Windows.UI.Xaml;
     using Windows.UI.Xaml.Controls;
     using Parse;
+    using TheAsocialNetwork.UI.UWP.Helpers.Data;
     using TheAsocialNetwork.UI.UWP.Models;
     using TheAsocialNetwork.UI.UWP.Models.Parse;
     using TheAsocialNetwork.UI.UWP.Models.SqLite;
@@ -25,21 +26,89 @@
         {
             // await ParseUser.LogOutAsync();
 
-            //var imageInfo = new ImageInfoParse()
+            // var imageInfo = new ImageInfoParse()
+            // {
+            //     OriginalName = "Klati3",
+            //     FileExstension = "se",
+            //     ByteArrayContent = new byte[100]
+            // };
+
+            // var newImage = new ImageParse()
+            // {
+            //     Title = "Test image title",
+            //     Description = "Deiba is snimkata",
+            //     ImageInfo = imageInfo
+            // };
+
+            // var location = new LocationParse()
+            // {
+            //     Latitude = 43.3,
+            //     Longitude = 43.3,
+            //     Town = "Sofia",
+            //     Country = "BGGG"
+            // };
+
+            // var video = new VideoParse()
+            // {
+            //     Description = "some very cool video",
+            //     Title = "Qq wunderbar",
+            //     VideoUrl = "https://www.youtube.com/watch?v=FrG4TEcSuRg"
+            // };
+
+            // var newPost = new PostParse()
+            // {
+            //     Title = "Test title",
+            //     Content = "Some test content",
+            //     Category = "Bitch",
+            //     Location = location
+            // };
+
+            // newPost.AddToList("Images", newImage);
+            // newPost.AddToList("Videos", video);
+
+            // await newPost.SaveAsync();
+
+            //// newPost.Images = new List<ImageParse>();
+
+            //// newPost.Images.AddRange(new List<ImageParse>() { newImage });
+
+            // var newUser = new UserParse()
+            // {
+            //     Password = "sraLiDnes123",
+            //     Username = "Pesho2",
+            //     Email = "pesho2@pesho.com"
+            // };
+
+            // newUser.Posts.Add(newPost);
+
+            // var parseService = new ParseAuthenticationService();
+
+            // await parseService.RegisterAsync(newUser);
+
+            // var result = await parseService.LogInAsync("Pesho2", "sraLiDnes123");
+
+            // var postService = new ParsePostsService();
+
+            // var posts = await postService.GetPostsByCategotyAsync(Category.Ideas);
+        }
+
+        private async void ButtonBase_OnClick2(object sender, RoutedEventArgs e)
+        {
+            //var imageInfo = new ImageInfoSql()
             //{
             //    OriginalName = "Klati3",
             //    FileExstension = "se",
             //    ByteArrayContent = new byte[100]
             //};
 
-            //var newImage = new ImageParse()
+            //var newImage = new ImageSql()
             //{
             //    Title = "Test image title",
             //    Description = "Deiba is snimkata",
             //    ImageInfo = imageInfo
             //};
 
-            //var location = new LocationParse()
+            //var location = new LocationSql()
             //{
             //    Latitude = 43.3,
             //    Longitude = 43.3,
@@ -47,107 +116,49 @@
             //    Country = "BGGG"
             //};
 
-            //var video = new VideoParse()
+            //var video = new VideoSql()
             //{
             //    Description = "some very cool video",
             //    Title = "Qq wunderbar",
             //    VideoUrl = "https://www.youtube.com/watch?v=FrG4TEcSuRg"
             //};
 
-            //var newPost = new PostParse()
+            //var newPost = new PostSql()
             //{
             //    Title = "Test title",
             //    Content = "Some test content",
             //    Category = "Bitch",
-            //    Location = location
+            //    Location = location,
+            //    Images = new List<ImageSql>() { newImage },
+            //    Videos = new List<VideoSql>() { video }
             //};
 
-            ////   await newPost.SaveAsync();
-
-            //newPost.AddToList("Images", newImage);
-            //newPost.AddToList("Videos", video);
-
-            // await newPost.SaveAsync();
-
-            //  newPost.Images = new List<ImageParse>();
-
-            // newPost.Images.AddRange( new List<ImageParse>() { newImage});
-
-            //var newUser = new UserParse()
+            //var newUser = new UserSql()
             //{
             //    Password = "sraLiDnes123",
             //    Username = "Pesho2",
-            //    Email = "pesho2@pesho.com"
+            //    Email = "pesho2@pesho.com",
+            //    Posts = new List<PostSql>() { newPost}
             //};
 
-            // newUser.Posts.Add(newPost);
 
-            //  var parseService = new ParseAuthenticationService();
-
-            //  await parseService.RegisterAsync(newUser);
-
-            // var result = await parseService.LogInAsync("Pesho2", "sraLiDnes123");
-
-            var postService = new ParsePostsService();
-
-            var posts = await postService.GetPostsByCategotyAsync(Category.Ideas);
-        }
-
-        private async void ButtonBase_OnClick2(object sender, RoutedEventArgs e)
-        {
-
-            var imageInfo = new ImageInfoSql()
-            {
-                OriginalName = "Klati3",
-                FileExstension = "se",
-                ByteArrayContent = new byte[100]
-            };
-
-            var newImage = new ImageSql()
-            {
-                Title = "Test image title",
-                Description = "Deiba is snimkata",
-                ImageInfo = imageInfo
-            };
-
-            var location = new LocationSql()
-            {
-                Latitude = 43.3,
-                Longitude = 43.3,
-                Town = "Sofia",
-                Country = "BGGG"
-            };
-
-            var video = new VideoSql()
-            {
-                Description = "some very cool video",
-                Title = "Qq wunderbar",
-                VideoUrl = "https://www.youtube.com/watch?v=FrG4TEcSuRg"
-            };
-
-            var newPost = new PostSql()
-            {
-                Title = "Test title",
-                Content = "Some test content",
-                Category = "Bitch",
-                Location = location,
-                Images = new List<ImageSql>() { newImage },
-                Videos = new List<VideoSql>() { video }
-            };
-
-            var newUser = new UserSql()
-            {
-                Password = "sraLiDnes123",
-                Username = "Pesho2",
-                Email = "pesho2@pesho.com",
-                Posts = new List<PostSql>() { newPost}
-            };
+            await ParseUser.LogOutAsync();
 
             var service = new SqLitePostsService();
+           
+            // var sqlResponce = await service.AddUserWithDatasync(newUser);
 
-            var result = await service.AddUserWithDatasync(newUser);
+            var postsSql = await service.GetAllPostsAsync();
 
-            var posts = await service.GetAllPostsAsync();
+            var parseService = new ParseAuthenticationService();
+            var result = await parseService.LogInAsync("Pesho2", "sraLiDnes123");
+
+            var postServiceParse = new ParsePostsService();
+            var sqlRoParseConv = new SqLiteToParseObjecConvertor();
+
+            var parsePostsFromSqLite = sqlRoParseConv.ConvertRangeOfPost(postsSql);
+
+            var response = await postServiceParse.AddNewRangeOfPostAsync(parsePostsFromSqLite);
         }
     }
 }
