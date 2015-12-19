@@ -1,24 +1,18 @@
 ﻿namespace TheAsocialNetwork.UI.UWP.Views
 {
     using System;
-    using System.Collections.Generic;
-    using System.IO;
     using System.Linq;
-    using System.Net.Http;
     using System.Runtime.InteropServices.WindowsRuntime;
     using System.Threading.Tasks;
-    using Windows.Media.Capture;
+    using Parse;
+    using TheAsocialNetwork.UI.UWP.Helpers.Data;
+    using TheAsocialNetwork.UI.UWP.Services.Data.Parse;
+    using TheAsocialNetwork.UI.UWP.Services.Data.SqLite;
     using Windows.Storage.Streams;
     using Windows.UI.Xaml;
     using Windows.UI.Xaml.Controls;
     using Windows.UI.Xaml.Media.Imaging;
-    using Parse;
-    using TheAsocialNetwork.UI.UWP.Helpers.Data;
-    using TheAsocialNetwork.UI.UWP.Models;
-    using TheAsocialNetwork.UI.UWP.Models.Parse;
-    using TheAsocialNetwork.UI.UWP.Models.SqLite;
-    using TheAsocialNetwork.UI.UWP.Services.Data.Parse;
-    using TheAsocialNetwork.UI.UWP.Services.Data.SqLite;
+    using Windows.UI.Xaml.Navigation;
 
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
@@ -28,6 +22,7 @@
         public AccountView()
         {
             this.InitializeComponent();
+            this.NavigationCacheMode = NavigationCacheMode.Required;
         }
 
         private async void ButtonBase_OnClick(object sender, RoutedEventArgs e)
@@ -97,7 +92,7 @@
 
             // var postService = new ParsePostsService();
 
-            // var posts = await postService.GetAllPostsAsync(Category.Ideas);
+            // var posts = await postService.GetCurrentUserAllPostsAsync(Category.Ideas);
         }
 
         private async void ButtonBase_OnClick2(object sender, RoutedEventArgs e)
@@ -180,7 +175,7 @@
 
             var sqSservice = new SqLitePostsService();
 
-          // var sqlResponce = await sqSservice.AddUserWithDatasync(newUser);
+            // var sqlResponce = await sqSservice.AddUserWithDatasync(newUser);
 
             var postsSql = await sqSservice.GetAllPostsAsync();
 
@@ -194,19 +189,9 @@
 
             var response = await postServiceParse.AddNewPostAsync(parsePostsFromSqLite);
 
-            var currentUser = ParseUser.CurrentUser as UserParse;
+            var parsePosts = (await postServiceParse.GetCurrentUserAllPostsAsync()).FirstOrDefault();
 
-            //var currentuserPostsFromParse = await new ParseQuery<UserParse>()
-            //    .Where(u => u.ObjectId == currentUser.ObjectId)
-               
-            //    .FindAsync();
-
-            var parsePosts = await postServiceParse.GetAllPostsAsync(Category.Ideas);
-
-            //this.img.Source =
-            //    await
-            //        this.ImageFromBytes(
-            //            parsePosts.Images.FirstOrDefault().ImageInfo.ByteArrayContent);
+            this.img.Source = new BitmapImage(parsePosts.Images.FirstOrDefault().ImageInfo.Url);
         }
 
         public async Task<BitmapImage> ImageFromBytes(byte[] bytes)

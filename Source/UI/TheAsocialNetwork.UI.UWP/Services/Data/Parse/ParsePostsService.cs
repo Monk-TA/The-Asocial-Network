@@ -35,6 +35,8 @@
         {
             try
             {
+                await Task.WhenAll(newPosts.Select(p => this.UploadFiles(p.Images)));
+
                 var currentUser = (UserParse)ParseUser.CurrentUser;
                 currentUser.AddRangeToList("Posts", newPosts);
                 await currentUser.SaveAsync();
@@ -55,11 +57,6 @@
             {
                 await Task.WhenAll(files.Select(f => f.ImageInfo.SaveAsync()));
             }
-
-            //foreach (ParseFile file in files)
-            //{
-            //    await file.SaveAsync();
-            //}
         }
 
         public async Task<PostParse> UpdatePostAsync(PostParse postToUpdate)
@@ -94,52 +91,40 @@
             }
         }
 
-        public async Task<IEnumerable<PostParse>> GetAllPostsAsync(Category category)
+        public async Task<IEnumerable<PostParse>> GetCurrentUserAllPostsAsync()
         {
             try
             {
-                var posts = ParseUser.CurrentUser.Get<IList<object>>("Posts");
+                var currenUser = ParseUser.CurrentUser;
 
-                var fullPosts = new List<PostParse>();
+                var query = currenUser.Get<List<object>>("Posts");
 
-                foreach (var obj in posts)
+                var usersPosts = new List<PostParse>();
+
+                foreach (var post in query.Select(obj => ((PostParse)obj)))
                 {
-                    var id = (obj as ParseObject).ObjectId;
+                    await post.FetchIfNeededAsync();
 
-                    var post = await new ParseQuery<PostParse>().Include("Images").GetAsync(id);
+                    var images = post.Get<List<object>>("Images");
 
-                    fullPosts.Add(post);
+                    if (post.Images == null)
+                    {
+                        post.Images = new List<ImageParse>();
+                    }
+
+                    foreach (var im in images.Select(img => ((ImageParse)img)))
+                    {
+                        await im.FetchIfNeededAsync();
+                        post.Images.Add(im);
+                    }
+
+                    var location = post.Get<ParseObject>("Location");
+                    await location.FetchIfNeededAsync();
+
+                    usersPosts.Add(post);
                 }
 
-                //var weapons = query;
-
-
-                //  return null;
-
-
-                // var posts = ParseUser.CurrentUser.Get<IList<Object>>("Posts");
-
-                //var userQuery = ParseUser.Query;
-
-                //userQuery = userQuery.Include("Posts");
-
-                //IEnumerable<ParseUser> results = await userQuery.FindAsync();
-
-                //var result = (await new ParseQuery<PostParse>()
-                //            .FindAsync()).ToList();
-
-
-                //var singleresult = (await new ParseQuery<PostParse>()
-                //    .Include("Images")
-                //  .GetAsync(result[2].ObjectId));
-
-                //foreach (ImageParse  img in singleresult.Images)
-                //{
-                //    var imeg = img;
-                //}
-
-
-                return fullPosts;
+                return usersPosts;
             }
             catch (Exception ex)
             {
@@ -148,8 +133,5 @@
                 return null;
             }
         }
-
-
-
     }
 }
