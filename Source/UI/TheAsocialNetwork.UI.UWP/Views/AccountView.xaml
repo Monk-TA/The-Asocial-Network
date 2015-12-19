@@ -22,6 +22,7 @@
         <StackPanel Grid.Row="1">
             <Button Content="Click me" Click="ButtonBase_OnClick" HorizontalAlignment="Stretch"></Button>
             <Button Content="Click me to Light" Click="ButtonBase_OnClick2" HorizontalAlignment="Stretch"></Button>
+            <Image x:Name="img"></Image>
         </StackPanel>
     </Grid>
 </Page>

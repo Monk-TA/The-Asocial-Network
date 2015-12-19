@@ -6,15 +6,6 @@
     [ParseClassName("Post")]
     public class PostParse : ParseObject
     {
-        //private ICollection<ImageParse> images;
-        //private ICollection<VideoParse> videos;
-
-        public PostParse()
-        {
-           // this.Images = new List<ImageParse>();
-           // this.Videos = new List<VideoParse>();
-        }
-
         [ParseFieldName("Title")]
         public string Title
         {
@@ -49,7 +40,6 @@
             get { return this.GetProperty<bool>(); }
             set { this.SetProperty<bool>(value); }
         }
-
 
         [ParseFieldName("Images")]
         public List<ImageParse> Images

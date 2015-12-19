@@ -19,18 +19,18 @@
             set { this.SetProperty<string>(value); }
         }
 
-        //[ParseFieldName("ImageInfo")]
-        //public ParseRelation<ImageInfoParse> ImageInfo
-        //{
-        //    get { return this.GetRelationProperty<ImageInfoParse>(); }
-
-        //}
+        [ParseFieldName("ImageUrl")]
+        public string ImageUrl
+        {
+            get { return this.GetProperty<string>(); }
+            set { this.SetProperty<string>(value); }
+        }
 
         [ParseFieldName("ImageInfo")]
-        public ImageInfoParse ImageInfo
+        public ParseFile ImageInfo
         {
-            get { return this.GetProperty<ImageInfoParse>(); }
-            set { this.SetProperty<ImageInfoParse>(value); }
+            get { return this.GetProperty<ParseFile>(); }
+            set { this.SetProperty<ParseFile>(value); }
         }
     }
 }

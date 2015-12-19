@@ -4,20 +4,19 @@
     using global::Parse;
 
     public class UserParse : ParseUser
-    {
-        //private ICollection<PostParse> posts;
-
-        public UserParse()
-        {
-           // this.Posts = new List<PostParse>();
-        }
-
+    { 
         [ParseFieldName("Avatar")]
         public AvatarParse Avatar
         {
             get { return this.GetProperty<AvatarParse>(); }
             set { this.SetProperty<AvatarParse>(value); }
         }
+
+        //[ParseFieldName("PostsRelations")]
+        //public ParseRelation<PostParse> PostsRelations
+        //{
+        //    get { return this.GetRelationProperty<PostParse>(); }
+        //}
 
         [ParseFieldName("Posts")]
         public List<PostParse> Posts

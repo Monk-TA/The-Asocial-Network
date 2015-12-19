@@ -1,9 +1,17 @@
 ﻿namespace TheAsocialNetwork.UI.UWP.Views
 {
+    using System;
     using System.Collections.Generic;
+    using System.IO;
+    using System.Linq;
     using System.Net.Http;
+    using System.Runtime.InteropServices.WindowsRuntime;
+    using System.Threading.Tasks;
+    using Windows.Media.Capture;
+    using Windows.Storage.Streams;
     using Windows.UI.Xaml;
     using Windows.UI.Xaml.Controls;
+    using Windows.UI.Xaml.Media.Imaging;
     using Parse;
     using TheAsocialNetwork.UI.UWP.Helpers.Data;
     using TheAsocialNetwork.UI.UWP.Models;
@@ -89,17 +97,43 @@
 
             // var postService = new ParsePostsService();
 
-            // var posts = await postService.GetPostsByCategotyAsync(Category.Ideas);
+            // var posts = await postService.GetAllPostsAsync(Category.Ideas);
         }
 
         private async void ButtonBase_OnClick2(object sender, RoutedEventArgs e)
         {
-            //var imageInfo = new ImageInfoSql()
+            //var camera = new CameraCaptureUI();
+
+            //var photo = await camera.CaptureFileAsync(CameraCaptureUIMode.Photo);
+
+            //ImageInfoSql imageInfo = null;
+
+            //if (photo != null)
             //{
-            //    OriginalName = "Klati3",
-            //    FileExstension = "se",
-            //    ByteArrayContent = new byte[100]
-            //};
+            //    var extension = photo.FileType;
+            //    var bytearray = File.ReadAllBytes(photo.Path);
+            //    var nae = photo.DisplayName;
+
+            //    imageInfo = new ImageInfoSql()
+            //    {
+            //        OriginalName = nae,
+            //        FileExstension = extension,
+            //        ByteArrayContent = bytearray
+            //    };
+
+            //    //imageInfo.OriginalName = nae;
+            //    //imageInfo.FileExstension = extension;
+            //    //imageInfo.ByteArrayContent = bytearray;
+
+            //    // var img = new BitmapImage(new Uri(photo.Path));
+            //}
+
+            ////var imageInfo = new ImageInfoSql()
+            ////{
+            ////    OriginalName = "Klati3",
+            ////    FileExstension = "se",
+            ////    ByteArrayContent = new byte[100]
+            ////};
 
             //var newImage = new ImageSql()
             //{
@@ -138,17 +172,17 @@
             //    Password = "sraLiDnes123",
             //    Username = "Pesho2",
             //    Email = "pesho2@pesho.com",
-            //    Posts = new List<PostSql>() { newPost}
+            //    Posts = new List<PostSql>() { newPost }
             //};
 
 
             await ParseUser.LogOutAsync();
 
-            var service = new SqLitePostsService();
-           
-            // var sqlResponce = await service.AddUserWithDatasync(newUser);
+            var sqSservice = new SqLitePostsService();
 
-            var postsSql = await service.GetAllPostsAsync();
+          // var sqlResponce = await sqSservice.AddUserWithDatasync(newUser);
+
+            var postsSql = await sqSservice.GetAllPostsAsync();
 
             var parseService = new ParseAuthenticationService();
             var result = await parseService.LogInAsync("Pesho2", "sraLiDnes123");
@@ -156,9 +190,35 @@
             var postServiceParse = new ParsePostsService();
             var sqlRoParseConv = new SqLiteToParseObjecConvertor();
 
-            var parsePostsFromSqLite = sqlRoParseConv.ConvertRangeOfPost(postsSql);
+            var parsePostsFromSqLite = await sqlRoParseConv.ConvertSinglePostAsync(postsSql.FirstOrDefault());
 
-            var response = await postServiceParse.AddNewRangeOfPostAsync(parsePostsFromSqLite);
+            var response = await postServiceParse.AddNewPostAsync(parsePostsFromSqLite);
+
+            var currentUser = ParseUser.CurrentUser as UserParse;
+
+            //var currentuserPostsFromParse = await new ParseQuery<UserParse>()
+            //    .Where(u => u.ObjectId == currentUser.ObjectId)
+               
+            //    .FindAsync();
+
+            var parsePosts = await postServiceParse.GetAllPostsAsync(Category.Ideas);
+
+            //this.img.Source =
+            //    await
+            //        this.ImageFromBytes(
+            //            parsePosts.Images.FirstOrDefault().ImageInfo.ByteArrayContent);
+        }
+
+        public async Task<BitmapImage> ImageFromBytes(byte[] bytes)
+        {
+            BitmapImage image = new BitmapImage();
+            using (InMemoryRandomAccessStream stream = new InMemoryRandomAccessStream())
+            {
+                await stream.WriteAsync(bytes.AsBuffer());
+                stream.Seek(0);
+                await image.SetSourceAsync(stream);
+            }
+            return image;
         }
     }
 }

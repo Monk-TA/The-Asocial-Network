@@ -1,23 +1,42 @@
 ﻿namespace TheAsocialNetwork.UI.UWP.Helpers.Data
 {
     using System.Collections.Generic;
+    using System.Linq;
+    using System.Threading.Tasks;
     using TheAsocialNetwork.UI.UWP.Models.Parse;
     using TheAsocialNetwork.UI.UWP.Models.SqLite;
     using Parse;
     using Common.Extensions;
+    using TheAsocialNetwork.UI.UWP.Services.Data.Parse;
+
     public class SqLiteToParseObjecConvertor
     {
-        public IEnumerable<PostParse> ConvertRangeOfPost(IEnumerable<PostSql> sqlPosts)
+        private ParseFilesService parseFilesService;
+
+        public SqLiteToParseObjecConvertor()
         {
-            var parsePosts = new List<PostParse>();
-
-            sqlPosts.ForEach(p => parsePosts.Add(this.ConvertSinglePost(p)));
-
-            return parsePosts;
+            this.parseFilesService = new ParseFilesService();
         }
 
-        public PostParse ConvertSinglePost(PostSql sqlPost)
+        public async Task<IEnumerable<PostParse>> ConvertRangeOfPost(IEnumerable<PostSql> sqlPosts)
         {
+            if (sqlPosts == null)
+            {
+                return null;
+            }
+
+            var posts = (await Task.WhenAll(sqlPosts.Select(p => this.ConvertSinglePostAsync(p)))).ToList();
+
+            return posts;
+        }
+
+        public async Task<PostParse> ConvertSinglePostAsync(PostSql sqlPost)
+        {
+            if (sqlPost == null)
+            {
+                return null;
+            }
+
             var parsePost = new PostParse()
             {
                 Title = sqlPost.Title,
@@ -27,21 +46,22 @@
                 Location = this.ConvertSingleLocation(sqlPost.Location)
             };
 
+            var parseImages = await Task.WhenAll(sqlPost.Images.Select(i => this.ConvertSingleImageAsync(i)));
+
             if (sqlPost.Images != null)
             {
-                sqlPost.Images.ForEach(i => parsePost.AddToList("Images", this.ConvertSingleImage(i)));
+                parseImages.ForEach(i => parsePost.AddToList("Images", i));
             }
 
             if (sqlPost.Videos != null)
             {
-                sqlPost.Videos.ForEach(v => parsePost.AddToList("Videos", this.ConvertSingleVideo(v)));
+                sqlPost.Videos.ForEach(v => parsePost.AddToList("Videos", this.ConvertSingleVideoAsync(v)));
             }
 
             return parsePost;
         }
 
-
-        public ImageParse ConvertSingleImage(ImageSql sqlImage)
+        public async Task<ImageParse> ConvertSingleImageAsync(ImageSql sqlImage)
         {
             var parseImage = new ImageParse()
             {
@@ -54,18 +74,18 @@
             {
                 var sqlImageInfo = sqlImage.ImageInfo;
 
-                parseImage.ImageInfo = new ImageInfoParse()
-                {
-                    OriginalName = sqlImageInfo.OriginalName,
-                    FileExstension = sqlImageInfo.FileExstension,
-                    ByteArrayContent = sqlImageInfo.ByteArrayContent
-                };
+                var imageInfo = new ParseFile(sqlImageInfo.OriginalName.ReplaceFileNameWithGuid(), sqlImageInfo.ByteArrayContent);
+
+                imageInfo = await this.parseFilesService.UploadFileAsync(imageInfo);
+
+                parseImage.ImageInfo = imageInfo;
+                parseImage.ImageUrl = imageInfo.Url.AbsolutePath;
             }
 
             return parseImage;
         }
 
-        public VideoParse ConvertSingleVideo(VideoSql sqlVideo)
+        public VideoParse ConvertSingleVideoAsync(VideoSql sqlVideo)
         {
             var parseVideo = new VideoParse()
             {

@@ -33,7 +33,6 @@
 
         private void InitParse()
         {
-            ParseObject.RegisterSubclass<ImageInfoParse>();
             ParseObject.RegisterSubclass<LocationParse>();
             ParseObject.RegisterSubclass<AvatarParse>();
             ParseObject.RegisterSubclass<VideoParse>();
