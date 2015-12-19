@@ -49,13 +49,14 @@
             var sqliteService = new SqlConnectionService();
 
             var connection = sqliteService.GetDbConnectionAsync();
-            await connection.CreateTableAsync<ImageInfoSql>();
-            await connection.CreateTableAsync<ImageSql>();
-            await connection.CreateTableAsync<AvatarSql>();
+
+            await connection.CreateTableAsync<UserSql>();
+            await connection.CreateTableAsync<PostSql>();
             await connection.CreateTableAsync<LocationSql>();
             await connection.CreateTableAsync<VideoSql>();
-            await connection.CreateTableAsync<PostSql>();
-            await connection.CreateTableAsync<UserSql>();
+            await connection.CreateTableAsync<AvatarSql>();
+            await connection.CreateTableAsync<ImageSql>();
+            await connection.CreateTableAsync<ImageInfoSql>();
         }
 
         /// <summary>

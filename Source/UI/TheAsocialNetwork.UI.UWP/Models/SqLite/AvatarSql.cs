@@ -19,7 +19,7 @@
         [ForeignKey(typeof(ImageInfoSql))]
         public int ImageInfoId { get; set; }
 
-        [OneToOne]
+        [OneToOne(CascadeOperations = CascadeOperation.All)]
         public ImageInfoSql ImageInfo { get; set; }
     }
 }

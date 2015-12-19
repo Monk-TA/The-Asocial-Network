@@ -12,7 +12,6 @@
         [AutoIncrement]
         public int Id { get; set; }
 
-
         public string ObjectId { get; set; }
 
         public DateTime? CreatedAt { get; set; }
@@ -27,5 +26,8 @@
 
         [ForeignKey(typeof(PostSql))]
         public int PostId { get; set; }
+
+        [ManyToOne]
+        public PostSql Post { get; set; }
     }
 }

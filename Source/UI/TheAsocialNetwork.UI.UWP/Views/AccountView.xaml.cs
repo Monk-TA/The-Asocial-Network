@@ -23,7 +23,7 @@
 
         private async void ButtonBase_OnClick(object sender, RoutedEventArgs e)
         {
-           // await ParseUser.LogOutAsync();
+            // await ParseUser.LogOutAsync();
 
             //var imageInfo = new ImageInfoParse()
             //{
@@ -90,7 +90,7 @@
 
             var postService = new ParsePostsService();
 
-           var posts =  await postService.GetPostsByCategotyAsync(Category.Ideas);
+            var posts = await postService.GetPostsByCategotyAsync(Category.Ideas);
         }
 
         private async void ButtonBase_OnClick2(object sender, RoutedEventArgs e)
@@ -130,26 +130,24 @@
                 Title = "Test title",
                 Content = "Some test content",
                 Category = "Bitch",
-                Location = location
+                Location = location,
+                Images = new List<ImageSql>() { newImage },
+                Videos = new List<VideoSql>() { video }
             };
-
-            //   await newPost.SaveAsync();
-
-            newPost.Images.Add(newImage);
-            newPost.Videos.Add(video);
 
             var newUser = new UserSql()
             {
                 Password = "sraLiDnes123",
                 Username = "Pesho2",
-                Email = "pesho2@pesho.com"
+                Email = "pesho2@pesho.com",
+                Posts = new List<PostSql>() { newPost}
             };
-
-            newUser.Posts.Add(newPost);
 
             var service = new SqLitePostsService();
 
-           var result =  await service.AddNewPostAsync(newPost);
+            var result = await service.AddUserWithDatasync(newUser);
+
+            var posts = await service.GetAllPostsAsync();
         }
     }
 }

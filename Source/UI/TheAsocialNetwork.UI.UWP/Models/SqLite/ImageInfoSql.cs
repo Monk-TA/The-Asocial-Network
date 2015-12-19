@@ -6,8 +6,7 @@
     [Table("ImageInfo")]
     public class ImageInfoSql
     {
-        [PrimaryKey]
-        [AutoIncrement]
+        [PrimaryKey , AutoIncrement]
         public int Id { get; set; }
 
         public string ObjectId { get; set; }

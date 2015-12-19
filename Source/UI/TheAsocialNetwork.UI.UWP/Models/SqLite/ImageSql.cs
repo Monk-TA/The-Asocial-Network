@@ -19,14 +19,18 @@
         public string Title{get;set;}
 
         public string Description{get;set;}
+        
+        [ForeignKey(typeof(ImageInfoSql))]
+        public int ImageInfoId { get; set; }
+
+        [OneToOne(CascadeOperations = CascadeOperation.All)]
+        public ImageInfoSql ImageInfo {get;set;}
 
         [ForeignKey(typeof(PostSql))]
         public int PostId { get; set; }
 
-        [ForeignKey(typeof(ImageInfoSql))]
-        public int ImageInfoId { get; set; }
+        [ManyToOne]
+        public PostSql Post { get; set; }
 
-        [OneToOne]
-        public ImageInfoSql ImageInfo {get;set;}
     }
 }

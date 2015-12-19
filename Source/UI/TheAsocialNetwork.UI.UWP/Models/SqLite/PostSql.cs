@@ -28,7 +28,7 @@
         [ForeignKey(typeof(LocationSql))]
         public int LocationId { get; set; }
 
-        [OneToOne()]
+        [OneToOne(CascadeOperations = CascadeOperation.All)]
         public LocationSql Location { get; set; }
 
         public bool IsBest { get; set; }
@@ -36,10 +36,10 @@
         [ForeignKey(typeof(UserSql))]
         public int UserId { get; set; }
 
-        [OneToMany]
+        [OneToMany(CascadeOperations = CascadeOperation.All)]
         public List<ImageSql> Images { get; set; }
 
-        [OneToMany]
+        [OneToMany(CascadeOperations = CascadeOperation.All)]
         public List<VideoSql> Videos { get; set; }
     }
 }

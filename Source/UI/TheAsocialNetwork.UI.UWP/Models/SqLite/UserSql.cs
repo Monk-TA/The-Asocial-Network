@@ -8,6 +8,14 @@
     [Table("Users")]
     public class UserSql
     {
+        private List<PostSql> posts;
+
+        public UserSql()
+        {
+            this.posts = new List<PostSql>();
+        }
+
+
         [PrimaryKey]
         [AutoIncrement]
         public int Id { get; set; }
@@ -27,10 +35,10 @@
         [ForeignKey(typeof(AvatarSql))]
         public int AvatarId { get; set; }
 
-        [OneToOne]
+        [OneToOne(CascadeOperations = CascadeOperation.All)]
         public AvatarSql Avatar { get; set; }
 
-        [OneToMany]
+        [OneToMany(CascadeOperations = CascadeOperation.All)]
         public List<PostSql> Posts { get; set; }
     }
 }
