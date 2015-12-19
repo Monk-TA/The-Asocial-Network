@@ -31,6 +31,5 @@
 
         [ManyToOne]
         public PostSql Post { get; set; }
-
     }
 }
