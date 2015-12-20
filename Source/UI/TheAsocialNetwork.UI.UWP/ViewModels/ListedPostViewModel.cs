@@ -1,5 +1,6 @@
 ﻿namespace TheAsocialNetwork.UI.UWP.ViewModels
 {
+    using System;
     using System.Collections.Generic;
     using System.Collections.ObjectModel;
     using System.Linq;
@@ -16,11 +17,12 @@
     {
         private ObservableCollection<PostViewModel> posts;
 
-        private bool isWaitunForData = true;
+        private bool isWaitunForData = false;
 
         private ICommand getDataommand;
 
         public ListedPostViewModel(){
+
         }
 
 
@@ -39,30 +41,43 @@
 
         private async void HandleGetDataCommand()
         {
-            this.isWaitunForData = true;
+            this.IsWaitunForData = true;
 
-            var sqSservice = new SqLitePostsService();
+          //  var sqSservice = new SqLitePostsService();
 
             // var sqlResponce = await sqSservice.AddUserWithDatasync(newUser);
 
-            var postsSql = await sqSservice.GetAllPostsAsync();
+          //  var postsSql = await sqSservice.GetAllPostsAsync();
 
-            await ParseUser.LogOutAsync();
-            var parseService = new ParseAuthenticationService();
-            var result = await parseService.LogInAsync("Pesho2", "sraLiDnes123");
 
-            var postServiceParse = new ParsePostsService();
-            var sqlRoParseConv = new SqLiteToParseObjecConvertor();
+            try
+            {
 
-            var parsePostsFromSqLite = await sqlRoParseConv.ConvertSinglePostAsync(postsSql.FirstOrDefault());
+                await ParseUser.LogOutAsync();
+                var parseService = new ParseAuthenticationService();
+                var result = await parseService.LogInAsync("Pesho2", "sraLiDnes123");
 
-            var response = await postServiceParse.AddNewPostAsync(parsePostsFromSqLite);
+                var postServiceParse = new ParsePostsService();
+                 // var sqlRoParseConv = new SqLiteToParseObjecConvertor();
 
-            var parsePosts = (await postServiceParse.GetCurrentUserAllPostsAsync());
+                 //var parsePostsFromSqLite = await sqlRoParseConv.ConvertSinglePostAsync(postsSql.FirstOrDefault());
 
-            this.Posts = parsePosts.AsQueryable().Select(PostViewModel.FromParseObjectExpr).ToList();
+                //var response = await postServiceParse.AddNewPostAsync(parsePostsFromSqLite);
 
-            this.isWaitunForData = false;
+                var parsePosts = (await postServiceParse.GetCurrentUserAllPostsAsync());
+
+                if (parsePosts != null)
+                {
+                    this.Posts = parsePosts.AsQueryable().Select(PostViewModel.FromParseObjectExpr).ToList();
+                }
+            }
+            catch (Exception ex)
+            {
+                var msg = ex.Message;
+            }
+
+
+            this.IsWaitunForData = false;
         }
 
         public bool IsWaitunForData

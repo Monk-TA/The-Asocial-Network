@@ -1,9 +1,12 @@
 ﻿namespace TheAsocialNetwork.UI.UWP.Views
 {
     using System;
+    using System.Collections.Generic;
+    using System.IO;
     using System.Linq;
     using System.Runtime.InteropServices.WindowsRuntime;
     using System.Threading.Tasks;
+    using Windows.Media.Capture;
     using Parse;
     using TheAsocialNetwork.UI.UWP.Helpers.Data;
     using TheAsocialNetwork.UI.UWP.Services.Data.Parse;
@@ -13,6 +16,7 @@
     using Windows.UI.Xaml.Controls;
     using Windows.UI.Xaml.Media.Imaging;
     using Windows.UI.Xaml.Navigation;
+    using TheAsocialNetwork.UI.UWP.Models.SqLite;
 
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
@@ -97,85 +101,85 @@
 
         private async void ButtonBase_OnClick2(object sender, RoutedEventArgs e)
         {
-            //var camera = new CameraCaptureUI();
+            var camera = new CameraCaptureUI();
 
-            //var photo = await camera.CaptureFileAsync(CameraCaptureUIMode.Photo);
+            var photo = await camera.CaptureFileAsync(CameraCaptureUIMode.Photo);
 
-            //ImageInfoSql imageInfo = null;
+            ImageInfoSql imageInfo = null;
 
-            //if (photo != null)
+            if (photo != null)
+            {
+                var extension = photo.FileType;
+                var bytearray = File.ReadAllBytes(photo.Path);
+                var nae = photo.DisplayName;
+
+                imageInfo = new ImageInfoSql()
+                {
+                    OriginalName = nae,
+                    FileExstension = extension,
+                    ByteArrayContent = bytearray
+                };
+
+                //imageInfo.OriginalName = nae;
+                //imageInfo.FileExstension = extension;
+                //imageInfo.ByteArrayContent = bytearray;
+
+                // var img = new BitmapImage(new Uri(photo.Path));
+            }
+
+            //var imageInfo = new ImageInfoSql()
             //{
-            //    var extension = photo.FileType;
-            //    var bytearray = File.ReadAllBytes(photo.Path);
-            //    var nae = photo.DisplayName;
-
-            //    imageInfo = new ImageInfoSql()
-            //    {
-            //        OriginalName = nae,
-            //        FileExstension = extension,
-            //        ByteArrayContent = bytearray
-            //    };
-
-            //    //imageInfo.OriginalName = nae;
-            //    //imageInfo.FileExstension = extension;
-            //    //imageInfo.ByteArrayContent = bytearray;
-
-            //    // var img = new BitmapImage(new Uri(photo.Path));
-            //}
-
-            ////var imageInfo = new ImageInfoSql()
-            ////{
-            ////    OriginalName = "Klati3",
-            ////    FileExstension = "se",
-            ////    ByteArrayContent = new byte[100]
-            ////};
-
-            //var newImage = new ImageSql()
-            //{
-            //    Title = "Test image title",
-            //    Description = "Deiba is snimkata",
-            //    ImageInfo = imageInfo
+            //    OriginalName = "Klati3",
+            //    FileExstension = "se",
+            //    ByteArrayContent = new byte[100]
             //};
 
-            //var location = new LocationSql()
-            //{
-            //    Latitude = 43.3,
-            //    Longitude = 43.3,
-            //    Town = "Sofia",
-            //    Country = "BGGG"
-            //};
+            var newImage = new ImageSql()
+            {
+                Title = "Test image title",
+                Description = "Deiba is snimkata",
+                ImageInfo = imageInfo
+            };
 
-            //var video = new VideoSql()
-            //{
-            //    Description = "some very cool video",
-            //    Title = "Qq wunderbar",
-            //    VideoUrl = "https://www.youtube.com/watch?v=FrG4TEcSuRg"
-            //};
+            var location = new LocationSql()
+            {
+                Latitude = 43.3,
+                Longitude = 43.3,
+                Town = "Sofia",
+                Country = "BGGG"
+            };
 
-            //var newPost = new PostSql()
-            //{
-            //    Title = "Test title",
-            //    Content = "Some test content",
-            //    Category = "Bitch",
-            //    Location = location,
-            //    Images = new List<ImageSql>() { newImage },
-            //    Videos = new List<VideoSql>() { video }
-            //};
+            var video = new VideoSql()
+            {
+                Description = "some very cool video",
+                Title = "Qq wunderbar",
+                VideoUrl = "https://www.youtube.com/watch?v=FrG4TEcSuRg"
+            };
 
-            //var newUser = new UserSql()
-            //{
-            //    Password = "sraLiDnes123",
-            //    Username = "Pesho2",
-            //    Email = "pesho2@pesho.com",
-            //    Posts = new List<PostSql>() { newPost }
-            //};
+            var newPost = new PostSql()
+            {
+                Title = "Test title",
+                Content = "Some test content",
+                Category = "Bitch",
+                Location = location,
+                Images = new List<ImageSql>() { newImage },
+                Videos = new List<VideoSql>() { video }
+            };
+
+            var newUser = new UserSql()
+            {
+                Password = "sraLiDnes123",
+                Username = "Pesho2",
+                Email = "pesho2@pesho.com",
+                Posts = new List<PostSql>() { newPost }
+            };
 
 
-         
+
 
             var sqSservice = new SqLitePostsService();
 
-            // var sqlResponce = await sqSservice.AddUserWithDatasync(newUser);
+             var sqlResponce = await sqSservice.AddUserWithDatasync(newUser);
 
             var postsSql = await sqSservice.GetAllPostsAsync();
 

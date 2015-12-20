@@ -123,16 +123,55 @@
         <Setter Property="Height" Value="150"/>
         <Setter Property="Padding" Value="10"/>
         <Setter Property="TextWrapping" Value="WrapWholeWords"/>
+        <Setter Property="FontSize" Value="15"/>
         <Setter Property="HorizontalAlignment" Value="Stretch"/>
         <Setter Property="TextAlignment" Value="Justify"/>
     </Style>
 
-    <Style x:Key="TextBlockSmallCHeaderStyle" TargetType="TextBlock">
+    <Style x:Key="TextBlockSmallHeaderStyle" TargetType="TextBlock">
         <Setter Property="Height" Value="48"/>
         <Setter Property="Padding" Value="10"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="FontSize" Value="23"/>
         <Setter Property="TextWrapping" Value="NoWrap"/>
         <Setter Property="HorizontalAlignment" Value="Stretch"/>
         <Setter Property="TextAlignment" Value="Center"/>
     </Style>
+
+    <Style x:Key="StrretchedItemContainerStylr" TargetType="ListViewItem">
+        <Setter Property="HorizontalAlignment" Value="Stretch" />
+        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+    </Style>
+    
+    <Style x:Key="BorderNotRounded" TargetType="Border">
+        <Setter Property="BorderBrush" Value="{ThemeResource ApplicationForegroundThemeBrush}" />
+        <Setter Property="BorderThickness" Value="2"/>
+        <Setter Property="Padding" Value="10"/>
+        <Setter Property="Margin" Value="10, 10"/>
+        <Setter Property="HorizontalAlignment" Value="Stretch"/>
+    </Style>
+
+    <Style x:Key="VarticalScrollViewer" TargetType="ScrollViewer">
+        <Setter Property="HorizontalScrollBarVisibility" Value="Disabled"/>
+        <Setter Property="VerticalScrollBarVisibility" Value="Hidden"/>
+    </Style>
+
+    <Style x:Key="HorizontalScrollViewer" TargetType="ScrollViewer">
+        <Setter Property="HorizontalScrollBarVisibility" Value="Hidden"/>
+        <Setter Property="VerticalScrollBarVisibility" Value="Disabled"/>
+    </Style>
+
+    <Style x:Key="TextBlockFullContentStyle" TargetType="TextBlock">
+        <Setter Property="Height" Value="Auto"/>
+        <Setter Property="Padding" Value="10"/>
+        <Setter Property="TextWrapping" Value="WrapWholeWords"/>
+        <Setter Property="FontSize" Value="20"/>
+        <Setter Property="HorizontalAlignment" Value="Stretch"/>
+        <Setter Property="TextAlignment" Value="Justify"/>
+    </Style>
+
+
+
+
 
 </ResourceDictionary>

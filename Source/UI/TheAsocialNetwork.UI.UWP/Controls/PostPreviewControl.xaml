@@ -9,10 +9,12 @@
     d:DesignHeight="300"
     d:DesignWidth="400">
 
-    <Grid>
-        <StackPanel>
-            <TextBlock Style="{StaticResource TextBlockSmallCHeaderStyle}" Text="{Binding Title}"/>
-            <TextBlock Style="{StaticResource TextBlockSmallContentStyle}" Text="{Binding Content}"/>
+    <Border Style="{StaticResource BorderNotRounded}">
+        <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Center">
+        <TextBlock Style="{StaticResource TextBlockSmallHeaderStyle}"
+                       Text="{Binding Title}"/>
+        <TextBlock Style="{StaticResource TextBlockSmallContentStyle}" 
+                       Text="{Binding Content}"/>
         </StackPanel>
-    </Grid>
+    </Border>
 </UserControl>

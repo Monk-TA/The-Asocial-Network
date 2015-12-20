@@ -8,19 +8,19 @@
         public PostPreviewControl()
         {
             this.InitializeComponent();
-            this.ViewModel = new PostViewModel();
+           // this.ViewModel = new PostViewModel();
         }
 
-        public PostViewModel ViewModel
-        {
-            get
-            {
-                return this.DataContext as PostViewModel;
-            }
-            private set
-            {
-                this.DataContext = value;
-            }
-        }
+        //public PostViewModel ViewModel
+        //{
+        //    get
+        //    {
+        //        return this.DataContext as PostViewModel;
+        //    }
+        //    private set
+        //    {
+        //        this.DataContext = value;
+        //    }
+        //}
     }
 }

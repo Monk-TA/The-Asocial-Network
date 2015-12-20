@@ -97,6 +97,8 @@
             {
                 var currenUser = ParseUser.CurrentUser;
 
+                await currenUser.SaveAsync();
+
                 var query = currenUser.Get<List<object>>("Posts");
 
                 var usersPosts = new List<PostParse>();

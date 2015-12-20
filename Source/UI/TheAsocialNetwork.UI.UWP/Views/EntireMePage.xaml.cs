@@ -30,5 +30,13 @@
                 this.DataContext = value;
             }
         }
+
+        private void ListView_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            this.Frame.Navigate(
+                typeof(PostDetailedPage),
+                e.ClickedItem,
+                new Windows.UI.Xaml.Media.Animation.DrillInNavigationTransitionInfo());
+        }
     }
 }

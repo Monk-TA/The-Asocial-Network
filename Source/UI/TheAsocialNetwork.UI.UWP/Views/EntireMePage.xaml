@@ -9,50 +9,47 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
-          EntranceNavigationTransitionInfo.IsTargetElement="True">
+          EntranceNavigationTransitionInfo.IsTargetElement="True"
+          >
         <Grid.RowDefinitions>
             <RowDefinition Height="48"/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
+            <RowDefinition />
+            <RowDefinition Height="48"/>
         </Grid.RowDefinitions>
-        
+
         <controls:PageHeader Grid.Row="0">
             <controls:PageHeader.HeaderContent>
                 <TextBlock x:Name="title" Style="{ThemeResource PageTitleTextBlockStyle}" Text="ENTIRE ME"/>
             </controls:PageHeader.HeaderContent>
         </controls:PageHeader>
-        
-        <ScrollViewer Grid.Row="1">
-            <ListView ItemsSource="{Binding Posts}">
-                <ListView.ItemTemplate>
+
+        <ScrollViewer Grid.Row="1"
+                       Visibility="{Binding IsWaitunForData, 
+                                        Converter={StaticResource InverseBooleanToVisibilityConverter}}"
+                      Style="{StaticResource VarticalScrollViewer}">
+            <ListView ItemsSource="{Binding Posts}" 
+                    EntranceNavigationTransitionInfo.IsTargetElement="True"
+                    IsItemClickEnabled="True"
+                    ItemClick="ListView_ItemClick"
+                    ItemContainerStyle="{StaticResource StrretchedItemContainerStylr}">
+                <ItemsControl.ItemTemplate>
                     <DataTemplate>
                         <controls:PostPreviewControl/>
                     </DataTemplate>
-                </ListView.ItemTemplate>
-                
+                </ItemsControl.ItemTemplate>
+
             </ListView>
         </ScrollViewer>
+
+       <controls:ProgressControl Grid.Row="1"/>
 
         <Button Content="Refresh info"
                    Grid.Row="2"
                    Command="{Binding GetData}"
-                   HorizontalAlignment="Stretch" />
-        <!--Visibility="{Binding IsWaitunForData, Converter={StaticResource BooleanToVisibilityConverter}}"
-                   />-->
-
-
-        <StackPanel
-               Grid.Row="3" >
-        <!--Visibility="{Binding IsWaitunForData, Converter={StaticResource InverseBooleanToVisibilityConverter}}">-->
-            
-            <TextBlock Text="Getting information"
-                          HorizontalAlignment="Center"/>
-            <ProgressRing Grid.Row="1"
-                        Height="20" 
-                        HorizontalAlignment="Stretch"
-                         />
-        </StackPanel>
+                   HorizontalAlignment="Stretch"
+                    Height="48"
+        Visibility="{Binding IsWaitunForData, Converter={StaticResource InverseBooleanToVisibilityConverter}}"
+                   />
 
     </Grid>
 </Page>

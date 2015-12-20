@@ -102,6 +102,9 @@
       <DependentUpon>AppShell.xaml</DependentUpon>
     </Compile>
     <Compile Include="Commands\RelayCommand.cs" />
+    <Compile Include="Controls\ImageControl.xaml.cs">
+      <DependentUpon>ImageControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\NavMenuListView.cs" />
     <Compile Include="Controls\PageHeader.xaml.cs">
       <DependentUpon>PageHeader.xaml</DependentUpon>
@@ -117,6 +120,9 @@
     </Compile>
     <Compile Include="Controls\PostPreviewControl.xaml.cs">
       <DependentUpon>PostPreviewControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ProgressControl.xaml.cs">
+      <DependentUpon>ProgressControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Convertors\BooleanToVisibilityConverter.cs" />
     <Compile Include="Convertors\InverseBooleanToVisibilityConverter.cs" />
@@ -160,6 +166,9 @@
     <Compile Include="ViewModels\PostViewModel.cs" />
     <Compile Include="ViewModels\UserViewModel.cs" />
     <Compile Include="ViewModels\VideoViewModel.cs" />
+    <Compile Include="Views\AddPostPage.xaml.cs">
+      <DependentUpon>AddPostPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\BasicSubPage.xaml.cs">
       <DependentUpon>BasicSubPage.xaml</DependentUpon>
     </Compile>
@@ -174,6 +183,9 @@
     </Compile>
     <Compile Include="Views\MostImportantPage.xaml.cs">
       <DependentUpon>MostImportantPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PostDetailedPage.xaml.cs">
+      <DependentUpon>PostDetailedPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\ThoughtsPage.xaml.cs">
       <DependentUpon>ThoughtsPage.xaml</DependentUpon>
@@ -219,6 +231,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Controls\ImageControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Controls\PageHeader.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -236,6 +252,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\PostPreviewControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\ProgressControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -258,6 +278,10 @@
       <Generator>MSBuild:Compile</Generator>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Page>
+    <Page Include="Views\AddPostPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\BasicSubPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -275,6 +299,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\MostImportantPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\PostDetailedPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

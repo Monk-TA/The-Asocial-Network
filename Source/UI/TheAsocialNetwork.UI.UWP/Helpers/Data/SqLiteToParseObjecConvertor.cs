@@ -79,7 +79,7 @@
                 imageInfo = await this.parseFilesService.UploadFileAsync(imageInfo);
 
                 parseImage.ImageInfo = imageInfo;
-                parseImage.ImageUrl = imageInfo.Url.AbsolutePath;
+                parseImage.ImageUrl = imageInfo.Url.OriginalString;
             }
 
             return parseImage;

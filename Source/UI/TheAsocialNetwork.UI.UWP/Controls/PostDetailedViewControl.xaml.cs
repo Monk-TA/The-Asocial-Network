@@ -22,5 +22,10 @@ namespace TheAsocialNetwork.UI.UWP.Controls
                 this.DataContext = value;
             }
         }
+
+        private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }
