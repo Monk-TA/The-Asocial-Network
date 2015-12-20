@@ -52,9 +52,22 @@
 
         public ImageViewModel ImageInfo
         {
-            get { return this.imageInfo; }
+            get
+            {
+                if (this.imageInfo == null)
+                {
+                    this.imageInfo = new ImageViewModel();
+                }
+
+                return this.imageInfo;
+            }
             set
             {
+                if (this.imageInfo == null)
+                {
+                    this.imageInfo = new ImageViewModel();
+                }
+
                 this.imageInfo = value;
                 this.OnPropertyChanged("ImageInfo");
             }

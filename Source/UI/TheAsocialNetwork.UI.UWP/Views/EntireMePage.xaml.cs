@@ -12,11 +12,10 @@
         public EntireMePage()
         {
             this.InitializeComponent();
-
-
+     
             this.ViewModel = new ListedPostViewModel();
 
-          //  this.NavigationCacheMode = NavigationCacheMode.Required;
+            this.NavigationCacheMode = NavigationCacheMode.Required;
         }
 
         public ListedPostViewModel ViewModel

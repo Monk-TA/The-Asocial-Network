@@ -119,20 +119,7 @@
                     FileExstension = extension,
                     ByteArrayContent = bytearray
                 };
-
-                //imageInfo.OriginalName = nae;
-                //imageInfo.FileExstension = extension;
-                //imageInfo.ByteArrayContent = bytearray;
-
-                // var img = new BitmapImage(new Uri(photo.Path));
             }
-
-            //var imageInfo = new ImageInfoSql()
-            //{
-            //    OriginalName = "Klati3",
-            //    FileExstension = "se",
-            //    ByteArrayContent = new byte[100]
-            //};
 
             var newImage = new ImageSql()
             {

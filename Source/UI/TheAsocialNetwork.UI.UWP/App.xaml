@@ -4,7 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:TheAsocialNetwork.UI.UWP"
     xmlns:convertors="using:TheAsocialNetwork.UI.UWP.Convertors"
-    RequestedTheme="Light">
+    RequestedTheme="Dark">
 
     <Application.Resources>
         <ResourceDictionary>

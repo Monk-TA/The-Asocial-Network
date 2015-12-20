@@ -9,7 +9,7 @@
     d:DesignHeight="300"
     d:DesignWidth="400">
 
-    <Border Style="{StaticResource BorderNotRounded}">
+    <Border Style="{StaticResource BorderRounded}">
         <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Center">
         <TextBlock Style="{StaticResource TextBlockSmallHeaderStyle}"
                        Text="{Binding Title}"/>

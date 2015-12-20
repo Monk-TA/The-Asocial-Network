@@ -15,11 +15,24 @@
     d:DesignWidth="400">
     <Grid x:Name="grid" Background="{x:Bind Background}">
         <Grid x:Name="titleBar">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
             <ContentPresenter x:Name="content"
+                              Grid.Column="0"
                               VerticalAlignment="{x:Bind VerticalContentAlignment}"
                               HorizontalAlignment="{x:Bind HorizontalContentAlignment}"
                               Margin="{x:Bind Padding}"
                               Content="{x:Bind HeaderContent}"/>
+            <Button 
+                Grid.Column="1" 
+                VerticalAlignment="Center" 
+                HorizontalAlignment="Right"
+                Margin="0, 0, 10, 0"
+                Click="PageHeader_AddButtonClick">
+                <SymbolIcon Symbol="Add"/>
+            </Button>
         </Grid>
     </Grid>
 </UserControl>

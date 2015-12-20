@@ -114,9 +114,20 @@
 
         public LocationViewModel Location
         {
-            get { return this.location; }
+            get
+            {
+                if (this.location == null)
+                {
+                    this.location = new LocationViewModel();
+                }
+                return this.location;
+            }
             set
             {
+                if (this.location == null)
+                {
+                    this.location = new LocationViewModel();
+                }
                 this.location = value;
                 this.OnPropertyChanged("Location");
             }

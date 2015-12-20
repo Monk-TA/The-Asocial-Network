@@ -17,29 +17,14 @@ using Windows.UI.Xaml.Navigation;
 
 namespace TheAsocialNetwork.UI.UWP.Views
 {
-    using TheAsocialNetwork.UI.UWP.ViewModels;
-
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class AddPostPage : Page
+    public sealed partial class ImageFullViewPage : Page
     {
-        public AddPostPage()
+        public ImageFullViewPage()
         {
             this.InitializeComponent();
-            this.ViewModel = new AddPostViewModel();
-        }
-
-        public AddPostViewModel ViewModel
-        {
-            get
-            {
-                return this.DataContext as AddPostViewModel;
-            }
-            private set
-            {
-                this.DataContext = value;
-            }
         }
     }
 }

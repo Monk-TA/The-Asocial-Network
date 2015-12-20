@@ -29,7 +29,7 @@
         private DateTime? updatedAt;
         private string title;
         private string dscription;
-        private ImageViewModel imageInfo;
+        private ImageInfoViewModel imageInfo;
         private string imageUrl;
 
         public int Id
@@ -102,11 +102,24 @@
             }
         }
 
-        public ImageViewModel ImageInfo
+        public ImageInfoViewModel ImageInfo
         {
-            get { return this.imageInfo; }
+            get
+            {
+                if (this.imageInfo == null)
+                {
+                    this.imageInfo = new ImageInfoViewModel();
+                }
+
+                return this.imageInfo;
+            }
             set
             {
+                if (this.imageInfo == null)
+                {
+                    this.imageInfo = new ImageInfoViewModel();
+                }
+
                 this.imageInfo = value;
                 this.OnPropertyChanged("ImageInfo");
             }

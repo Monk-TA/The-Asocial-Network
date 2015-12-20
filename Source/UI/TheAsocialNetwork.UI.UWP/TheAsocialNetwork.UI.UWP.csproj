@@ -102,6 +102,9 @@
       <DependentUpon>AppShell.xaml</DependentUpon>
     </Compile>
     <Compile Include="Commands\RelayCommand.cs" />
+    <Compile Include="Controls\AddPostControl.xaml.cs">
+      <DependentUpon>AddPostControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\ImageControl.xaml.cs">
       <DependentUpon>ImageControl.xaml</DependentUpon>
     </Compile>
@@ -157,6 +160,7 @@
     <Compile Include="Services\Data\SqLite\SqlConnectionService.cs" />
     <Compile Include="Services\Data\SqLite\SqLitePostsService.cs" />
     <Compile Include="ViewModels\AccountViewModel.cs" />
+    <Compile Include="ViewModels\AddPostViewModel.cs" />
     <Compile Include="ViewModels\AvatarViewModel.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\ImageInfoViewModel.cs" />
@@ -177,6 +181,9 @@
     </Compile>
     <Compile Include="Views\EntireMePage.xaml.cs">
       <DependentUpon>EntireMePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ImageFullViewPage.xaml.cs">
+      <DependentUpon>ImageFullViewPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\LandingPage.xaml.cs">
       <DependentUpon>LandingPage.xaml</DependentUpon>
@@ -230,6 +237,10 @@
     <Page Include="AppShell.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\AddPostControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\ImageControl.xaml">
       <SubType>Designer</SubType>
@@ -293,6 +304,10 @@
     <Page Include="Views\EntireMePage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\ImageFullViewPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\LandingPage.xaml">
       <Generator>MSBuild:Compile</Generator>

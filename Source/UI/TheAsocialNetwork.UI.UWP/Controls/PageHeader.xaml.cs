@@ -1,8 +1,10 @@
 ﻿namespace TheAsocialNetwork.UI.UWP.Controls
 {
+    using System;
     using Windows.Foundation;
     using Windows.UI.Xaml;
     using Windows.UI.Xaml.Controls;
+    using TheAsocialNetwork.UI.UWP.Views;
 
     public sealed partial class PageHeader : UserControl
     {
@@ -31,5 +33,25 @@
         // Using a DependencyProperty as the backing store for HeaderContent.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty HeaderContentProperty =
             DependencyProperty.Register("HeaderContent", typeof(UIElement), typeof(PageHeader), new PropertyMetadata(DependencyProperty.UnsetValue));
+
+        private void PageHeader_AddButtonClick(object sender, ItemClickEventArgs e)
+        {
+            //(Window.Current.Content as AppShell)
+            //.AppFrame
+            //.Navigate(
+            //    typeof(AddPostPage),
+            //    e.ClickedItem,
+            //    new Windows.UI.Xaml.Media.Animation.DrillInNavigationTransitionInfo());
+        }
+
+        private void PageHeader_AddButtonClick(object sender, RoutedEventArgs e)
+        {
+            (Window.Current.Content as AppShell)
+            .AppFrame
+            .Navigate(
+                typeof(AddPostPage),
+                e.OriginalSource,
+                new Windows.UI.Xaml.Media.Animation.DrillInNavigationTransitionInfo());
+        }
     }
 }

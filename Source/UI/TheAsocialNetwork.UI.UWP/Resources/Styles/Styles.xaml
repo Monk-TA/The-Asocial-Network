@@ -143,17 +143,30 @@
         <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
     </Style>
     
-    <Style x:Key="BorderNotRounded" TargetType="Border">
+    <Style x:Key="BorderRounded" TargetType="Border">
         <Setter Property="BorderBrush" Value="{ThemeResource ApplicationForegroundThemeBrush}" />
         <Setter Property="BorderThickness" Value="2"/>
         <Setter Property="Padding" Value="10"/>
         <Setter Property="Margin" Value="10, 10"/>
+        <Setter Property="CornerRadius" Value="0"/>
+        <Setter Property="HorizontalAlignment" Value="Stretch"/>
+    </Style>
+
+    <Style x:Key="BorderNoPaddingRounded" TargetType="Border">
+        <Setter Property="BorderBrush" Value="{ThemeResource ApplicationForegroundThemeBrush}" />
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Background" Value="{ThemeResource ApplicationForegroundThemeBrush}"/>
+        <Setter Property="Margin" Value="10, 10"/>
+        <Setter Property="Padding" Value="0"/>
+        <Setter Property="CornerRadius" Value="0"/>
         <Setter Property="HorizontalAlignment" Value="Stretch"/>
     </Style>
 
     <Style x:Key="VarticalScrollViewer" TargetType="ScrollViewer">
         <Setter Property="HorizontalScrollBarVisibility" Value="Disabled"/>
         <Setter Property="VerticalScrollBarVisibility" Value="Hidden"/>
+        <Setter Property="VerticalAlignment" Value="Stretch"/>
+        <Setter Property="HorizontalAlignment" Value="Stretch"/>
     </Style>
 
     <Style x:Key="HorizontalScrollViewer" TargetType="ScrollViewer">
@@ -171,7 +184,32 @@
     </Style>
 
 
+    <Style x:Key="TextBlockLabelStyle" TargetType="TextBlock">
+        <Setter Property="Height" Value="Auto"/>
+        <Setter Property="Padding" Value="10"/>
+        <Setter Property="TextWrapping" Value="NoWrap"/>
+        <Setter Property="FontSize" Value="16"/>
+        <Setter Property="HorizontalAlignment" Value="Stretch"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="TextAlignment" Value="Left"/>
+    </Style>
 
 
+    <Style x:Key="TextBoxInputStyle" TargetType="TextBox">
+        <Setter Property="Height" Value="Auto"/>
+        <Setter Property="Padding" Value="5"/>
+        <Setter Property="Margin" Value="10"/>
+        <Setter Property="TextWrapping" Value="WrapWholeWords"/>
+        <Setter Property="FontSize" Value="18"/>
+        <Setter Property="HorizontalAlignment" Value="Stretch"/>
+        <Setter Property="VerticalAlignment" Value="Stretch"/>
+        <Setter Property="TextAlignment" Value="Left"/>
+    </Style>
+
+    <Style x:Key="ButtonMarginTenStrechedStyle" TargetType="Button">
+        <Setter Property="HorizontalAlignment" Value="Stretch"/>
+        <Setter Property="VerticalAlignment" Value="Stretch"/>
+        <Setter Property="Margin" Value="10, 5"/>
+    </Style>
 
 </ResourceDictionary>
