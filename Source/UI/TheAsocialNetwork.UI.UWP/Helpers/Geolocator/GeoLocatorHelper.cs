@@ -1,27 +1,25 @@
 ﻿namespace TheAsocialNetwork.UI.UWP.Helpers.Geolocator
 {
     using System;
-    using System.Collections.Generic;
     using System.Threading.Tasks;
+    using TheAsocialNetwork.UI.UWP.Services.Apis;
     using Windows.Devices.Geolocation;
     using Windows.Services.Maps;
-    using Windows.UI.Notifications;
-    using NotificationsExtensions.Toasts;
-    using TheAsocialNetwork.UI.UWP.Helpers.ToastNotifications;
 
     public class GeoLocatorHelper
     {
-        private ToastCrerator toaster;
+        private NotificationService notificator;
 
         public GeoLocatorHelper()
         {
-            this.toaster = new ToastCrerator();
+            this.notificator = new NotificationService();
         }
 
         public async Task<Geoposition> HandeleAccessStatus(  GeolocationAccessStatus accessStatus)
         {
-            ToastVisual visual = null;
             Geoposition geoposition = null;
+
+            var message = "";
 
             switch (accessStatus)
             {
@@ -31,22 +29,17 @@
                     break;
 
                 case GeolocationAccessStatus.Denied:
-                    visual = this.toaster.GetVisualToast("Access to location is denied.", null, null);
+                    message = "Access to location is denied!";
                     break;
 
                 case GeolocationAccessStatus.Unspecified:
-                    visual = this.toaster.GetVisualToast("Unspecified error.", null, null);
+                    message = "Unspecified error!";
                     break;
             }
 
-            if (visual != null)
+            if (message != "")
             {
-                var button = new ToastButtonDismiss();
-                ToastActionsCustom actios = this.toaster.GetToastCustomActions(null, new List<IToastButton>() { button });
-                ToastContent content = this.toaster.GetToastContent(visual, actios);
-                var doc = content.GetXml();
-                var notification = new ToastNotification(doc);
-                ToastNotificationManager.CreateToastNotifier().Show(notification);
+                this.notificator.ShowErrorToastWithDismissButton(message);
             }
 
             return geoposition;

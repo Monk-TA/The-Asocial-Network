@@ -146,7 +146,7 @@
     <Style x:Key="BorderRounded" TargetType="Border">
         <Setter Property="BorderBrush" Value="{ThemeResource ApplicationForegroundThemeBrush}" />
         <Setter Property="BorderThickness" Value="2"/>
-        <Setter Property="Padding" Value="10"/>
+        <Setter Property="Padding" Value="10, 10"/>
         <Setter Property="Margin" Value="10, 10"/>
         <Setter Property="CornerRadius" Value="0"/>
         <Setter Property="HorizontalAlignment" Value="Stretch"/>

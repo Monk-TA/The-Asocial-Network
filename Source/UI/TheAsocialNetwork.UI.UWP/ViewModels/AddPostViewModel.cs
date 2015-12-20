@@ -4,15 +4,14 @@
     using System.Collections.Generic;
     using System.Collections.ObjectModel;
     using System.IO;
-    using System.Linq;
     using System.Windows.Input;
-    using Windows.Media.Capture;
-    using Windows.UI.Popups;
-    using Parse;
     using TheAsocialNetwork.Common.Extensions;
     using TheAsocialNetwork.UI.UWP.Commands;
-    using TheAsocialNetwork.UI.UWP.Models.SqLite;
-    using TheAsocialNetwork.UI.UWP.Services.Data.Parse;
+    using TheAsocialNetwork.UI.UWP.Helpers.Data;
+    using TheAsocialNetwork.UI.UWP.Services.Apis;
+    using TheAsocialNetwork.UI.UWP.Services.Data.Common;
+    using Windows.Media.Capture;
+    using Windows.UI.Popups;
 
     public class AddPostViewModel : BaseViewModel
     {
@@ -20,14 +19,18 @@
 
         private PostViewModel post;
 
-        private bool isWaitunForData = false;
-
         private ICommand savePostCommand;
         private ICommand addImageCommand;
 
+        private ViewModelToSqlVodelConvertor postToSqlModel;
+        private SqLiteToParseUploadService sqlToParse;
+        private NotificationService notificator;
+
         public AddPostViewModel()
         {
-
+            this.postToSqlModel = new ViewModelToSqlVodelConvertor();
+            this.sqlToParse = new SqLiteToParseUploadService();
+            this.notificator = new NotificationService();
         }
 
         public ICommand SavePost
@@ -94,20 +97,28 @@
 
         private async void HandleSavePostCommand()
         {
-            var dialog = new MessageDialog("Adding new post");
-            await dialog.ShowAsync();
-        }
 
-        public bool IsWaitunForData
-        {
-            get { return this.isWaitunForData; }
-            set
+            this.Post.Images = this.Images;
+
+            var result = await this.postToSqlModel.ConvertSinglePostAsync(this.Post);
+
+            // TODO: Do that at background service, this thing has no place here!!
+            var success = await this.sqlToParse.UploudNewPostToParseAsync();
+
+            if (success)
             {
-                this.isWaitunForData = value;
-                this.OnPropertyChanged("IsWaitunForData");
+                this.notificator.ShowSuccessToast("Success - you added new " + this.Post.Category);
             }
-        }
+            else
+            {
+                this.notificator.ShowErrorToastWithDismissButton("Something Get really wrong, try again later!");
+            }
 
+            //var dialog = new MessageDialog("Result = " + posts);
+
+            //await dialog.ShowAsync();
+        }
+        
         public PostViewModel Post
         {
             get

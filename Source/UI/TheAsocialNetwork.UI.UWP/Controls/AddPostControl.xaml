@@ -8,10 +8,11 @@
     mc:Ignorable="d">
     <Border Style="{StaticResource BorderRounded}">
 
-        <Grid Margin="-4,0,4,0" >
+        <Grid Margin="-4,0,0,0" >
             <Grid.RowDefinitions>
                 <RowDefinition Height="60" />
                 <RowDefinition Height="2*" />
+                <RowDefinition Height="60" />
                 <RowDefinition Height="1.25*" x:Name="RowHeight"/>
                 <RowDefinition Height="48" />
             </Grid.RowDefinitions>
@@ -34,9 +35,25 @@
                         Style="{StaticResource TextBoxInputStyle}"
                         Text="{Binding Post.Content, Mode=TwoWay}"/>
 
-            <Border Grid.Row="2"
+            <ComboBox   Grid.Row="2"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="2"
+                        HorizontalAlignment="Stretch"
+                        VerticalAlignment="Stretch"
+                        Margin="10, 5"
+                        SelectedValuePath="Content"
+                        PlaceholderText="Select category ..."
+                        SelectedValue="{Binding Path=Post.Category, Mode=TwoWay}">
+                <ComboBoxItem Content="Idea" IsSelected="True"/>
+                <ComboBoxItem Content="Desire"/>
+                <ComboBoxItem Content="Thought"/>
+                <ComboBoxItem Content="Feeling"/>
+            </ComboBox>
+
+            <Border Grid.Row="3"
                     Grid.Column="0"
                     Grid.ColumnSpan="2" Style="{StaticResource BorderNoPaddingRounded}">
+
 
                 <ScrollViewer  
                  
@@ -61,12 +78,13 @@
                 </ScrollViewer>
             </Border>
 
-            <Button Grid.Row="3"
+            <Button Grid.Row="4"
                     Grid.Column="0"
                     Style="{StaticResource ButtonMarginTenStrechedStyle}"
-                Content="Save" Command="{Binding SavePost}"/>
+                    Content="Save" 
+                    Command="{Binding SavePost}"/>
 
-            <Button Grid.Row="3"
+            <Button Grid.Row="4"
                     Grid.Column="1"
                     Style="{StaticResource ButtonMarginTenStrechedStyle}"
                     Content="Add Image" Command="{Binding AddImage}"/>

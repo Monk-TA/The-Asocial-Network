@@ -101,6 +101,7 @@
     <Compile Include="AppShell.xaml.cs">
       <DependentUpon>AppShell.xaml</DependentUpon>
     </Compile>
+    <Compile Include="BackgroundProcesses\ParseUploadBascgroundTask.cs" />
     <Compile Include="Commands\RelayCommand.cs" />
     <Compile Include="Controls\AddPostControl.xaml.cs">
       <DependentUpon>AddPostControl.xaml</DependentUpon>
@@ -131,6 +132,7 @@
     <Compile Include="Convertors\InverseBooleanToVisibilityConverter.cs" />
     <Compile Include="Convertors\ReverseRotationConverter.cs" />
     <Compile Include="Helpers\Data\SqLiteToParseObjecConvertor.cs" />
+    <Compile Include="Helpers\Data\ViewModelToSqlVodelConvertor.cs" />
     <Compile Include="Helpers\Geolocator\GeoLocatorHelper.cs" />
     <Compile Include="Helpers\SqLite\SqLiteConnectionHelper.cs" />
     <Compile Include="Helpers\ToastNotifications\ToastCrerator.cs" />
@@ -153,6 +155,9 @@
     <Compile Include="Models\SqLite\VideoSql.cs" />
     <Compile Include="NavMenuItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\Apis\GeolocationService.cs" />
+    <Compile Include="Services\Apis\NotificationService.cs" />
+    <Compile Include="Services\Data\Common\SqLiteToParseUploadService.cs" />
     <Compile Include="Services\Data\Parse\ParseAuthenticationService.cs" />
     <Compile Include="Services\Data\Parse\ParseFilesService.cs" />
     <Compile Include="Services\Data\Parse\ParsePostsService.cs" />

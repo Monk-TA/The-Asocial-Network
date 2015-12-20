@@ -63,5 +63,26 @@
                 return null;
             }
         }
+
+        public async Task<bool> DeleteAllPostsAsync()
+        {
+            try
+            {
+                var connection = this.GetDbConnectionAsync();
+                var posts = await connection.DeleteAllAsync<PostSql>();
+                var locations = await connection.DeleteAllAsync<LocationSql>();
+                var images = await connection.DeleteAllAsync<ImageSql>();
+                var imageInfos = await connection.DeleteAllAsync<ImageInfoSql>();
+                var videos = await connection.DeleteAllAsync<VideoSql>();
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                var msg = ex.Message;
+
+                return false;
+            }
+        }
     }
 }

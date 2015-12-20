@@ -18,7 +18,7 @@
             this.parseFilesService = new ParseFilesService();
         }
 
-        public async Task<IEnumerable<PostParse>> ConvertRangeOfPost(IEnumerable<PostSql> sqlPosts)
+        public async Task<IEnumerable<PostParse>> ConvertRangeOfPostAsync(IEnumerable<PostSql> sqlPosts)
         {
             if (sqlPosts == null)
             {

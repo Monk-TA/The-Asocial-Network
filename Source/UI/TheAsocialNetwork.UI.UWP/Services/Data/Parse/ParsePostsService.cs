@@ -15,7 +15,7 @@
         {
             try
             {
-                await this.UploadFiles(newPost.Images);
+               // await this.UploadFiles(newPost.Images);
 
                 var currentUser = (UserParse)ParseUser.CurrentUser;
                 currentUser.AddToList("Posts", newPost);
@@ -31,23 +31,23 @@
             }
         }
 
-        public async Task<string> AddNewRangeOfPostAsync(IEnumerable<PostParse> newPosts)
+        public async Task<bool> AddNewRangeOfPostAsync(IEnumerable<PostParse> newPosts)
         {
             try
             {
-                await Task.WhenAll(newPosts.Select(p => this.UploadFiles(p.Images)));
+              //  await Task.WhenAll(newPosts.Select(p => this.UploadFiles(p.Images)));
 
                 var currentUser = (UserParse)ParseUser.CurrentUser;
                 currentUser.AddRangeToList("Posts", newPosts);
                 await currentUser.SaveAsync();
 
-                return "success";
+                return true;
             }
             catch (Exception ex)
             {
                 var msg = ex.Message;
 
-                return null;
+                return false;
             }
         }
 

@@ -61,7 +61,7 @@
             return result;
         }
 
-        public ToastActionsCustom GetToastCustomActions(IEnumerable<IToastInput> textBoxes, IEnumerable<IToastButton> buttons, string aurioUri = null)
+        public ToastActionsCustom GetToastCustomActions(IEnumerable<IToastInput> textBoxes, IEnumerable<IToastButton> buttons, string audioUri = null)
         {
             ToastActionsCustom actions = new ToastActionsCustom();
 
@@ -99,6 +99,5 @@
 
             return content;
         }
-
     }
 }
