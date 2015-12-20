@@ -1,9 +1,24 @@
 ﻿namespace TheAsocialNetwork.UI.UWP.ViewModels
 {
     using System;
+    using System.Linq.Expressions;
+    using TheAsocialNetwork.UI.UWP.Models.Parse;
 
     public class LocationViewModel : BaseViewModel
     {
+        public static LocationViewModel FromParseObjectSngle(LocationParse pObj)
+        {
+            return new LocationViewModel()
+            {
+                ObjectId = pObj.ObjectId,
+                Longitude = pObj.Longitude,
+                Latitude = pObj.Latitude,
+                Town = pObj.Town,
+                CreatedAt = pObj.CreatedAt,
+                Country = pObj.Country
+            };
+        }
+
         private int id;
         private string objectId;
         private DateTime? createdAt;

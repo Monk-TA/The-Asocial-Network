@@ -3,10 +3,32 @@
     using System;
     using System.Collections.Generic;
     using System.Collections.ObjectModel;
+    using System.Linq.Expressions;
+    using System.Linq;
+    using Parse;
     using TheAsocialNetwork.Common.Extensions;
+    using TheAsocialNetwork.UI.UWP.Models.Parse;
 
     public class PostViewModel : BaseViewModel
     {
+        public static Expression<Func<PostParse, PostViewModel>> FromParseObjectExpr
+        {
+            get
+            {
+                return pObj => new PostViewModel()
+                {
+                    ObjectId = pObj.ObjectId,
+                    Title = pObj.Title,
+                    Content = pObj.Content,
+                    Category = pObj.Category,
+                    CreatedAt = pObj.CreatedAt,
+                    isBest = pObj.IsBest,
+                    Location = LocationViewModel.FromParseObjectSngle(pObj.Location),
+                    Images = pObj.Images.AsQueryable().Select(ImageViewModel.FromParseObjectExpr).ToList()
+                };
+            }
+        }
+
         private ObservableCollection<ImageViewModel> images;
         private ObservableCollection<VideoViewModel> videos;
 

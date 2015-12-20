@@ -4,19 +4,20 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:controls="using:TheAsocialNetwork.UI.UWP.Controls"
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <!--<Grid.RowDefinitions>
+        <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition />
         </Grid.RowDefinitions>
 
-        <c:PageHeader x:Name="pageHeader">
-            <c:PageHeader.HeaderContent>
+        <controls:PageHeader x:Name="pageHeader">
+            <controls:PageHeader.HeaderContent>
                 <TextBlock x:Name="title" Style="{ThemeResource PageTitleTextBlockStyle}" Text="APP OVERVIEW"/>
-            </c:PageHeader.HeaderContent>
-        </c:PageHeader>
+            </controls:PageHeader.HeaderContent>
+        </controls:PageHeader>
 
         <ScrollViewer Grid.Row="1" EntranceNavigationTransitionInfo.IsTargetElement="True" Margin="12,4,0,0">
             <StackPanel >
@@ -39,7 +40,7 @@
                 <TextBlock Style="{ThemeResource BodyTextBlockStyle}" Margin="12,8"> 4) Styles.xaml - Styles including one for a hamburger button.</TextBlock>
                 <TextBlock Style="{ThemeResource BodyTextBlockStyle}" Margin="12,8"> 5) NavMenuListView.cs - A customized ListView to show the navigation items and handle keyboarding.</TextBlock>
             </StackPanel>
-        </ScrollViewer>-->
+        </ScrollViewer>
 
     </Grid>
 </Page>

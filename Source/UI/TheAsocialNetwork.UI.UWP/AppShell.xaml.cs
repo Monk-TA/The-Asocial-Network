@@ -26,44 +26,44 @@
                 {
                     Symbol = Symbol.Rotate,
                     Label = "ME",
-                    DestPage = typeof(EntireMeView)
+                    DestPage = typeof(EntireMePage)
                 },
                  new NavMenuItem()
                 {
                     Symbol = Symbol.OutlineStar,
                     Label = "Best of me",
-                    DestPage = typeof(MostImportantView)
+                    DestPage = typeof(MostImportantPage)
                 },                
                 new NavMenuItem()
                 {
                     Symbol = Symbol.Important,
                     Label = "My ideas",
-                    DestPage = typeof(IdeasView)
+                    DestPage = typeof(IdeasPage)
                 },
                 new NavMenuItem()
                 {
                     Symbol = Symbol.OtherUser,
                     Label = "My thoughts",
-                    DestPage = typeof(ThoughtsView)
+                    DestPage = typeof(ThoughtsPage)
                 },
                 new NavMenuItem()
                 {
                     Symbol = Symbol.ContactInfo,
                     Label = "My feelings",
-                    DestPage = typeof(FeelingsView)
+                    DestPage = typeof(FeelingsPage)
                 },
                
                 new NavMenuItem()
                 {
                     Symbol = Symbol.AddFriend,
                     Label = "My desires",
-                    DestPage = typeof(DesiresView)
+                    DestPage = typeof(DesiresPage)
                 },
                  new NavMenuItem()
                 {
                     Symbol = Symbol.Contact,
                     Label = "My account",
-                    DestPage = typeof(AccountView)
+                    DestPage = typeof(AccountPage)
                 },
                 new NavMenuItem()
                 {

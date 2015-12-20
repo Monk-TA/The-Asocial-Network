@@ -1,5 +1,5 @@
 ﻿<Page
-    x:Class="TheAsocialNetwork.UI.UWP.Views.IdeasView"
+    x:Class="TheAsocialNetwork.UI.UWP.Views.DesiresPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -7,11 +7,13 @@
     xmlns:controls="using:TheAsocialNetwork.UI.UWP.Controls"
     mc:Ignorable="d">
 
-    <Grid Background="LightGray">
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+          EntranceNavigationTransitionInfo.IsTargetElement="True">
         <controls:PageHeader>
             <controls:PageHeader.HeaderContent>
-                <TextBlock x:Name="title" Style="{ThemeResource PageTitleTextBlockStyle}" Text="MY IDEAS"/>
+                <TextBlock x:Name="title" Style="{ThemeResource PageTitleTextBlockStyle}" Text="MY DESIRES"/>
             </controls:PageHeader.HeaderContent>
         </controls:PageHeader>
+
     </Grid>
 </Page>

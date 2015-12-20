@@ -106,6 +106,18 @@
     <Compile Include="Controls\PageHeader.xaml.cs">
       <DependentUpon>PageHeader.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\PostDetailedViewControl.xaml.cs">
+      <DependentUpon>PostDetailedViewControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\PostEditControl.xaml.cs">
+      <DependentUpon>PostEditControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\PostLargePreviewControl.xaml.cs">
+      <DependentUpon>PostLargePreviewControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\PostPreviewControl.xaml.cs">
+      <DependentUpon>PostPreviewControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Convertors\BooleanToVisibilityConverter.cs" />
     <Compile Include="Convertors\InverseBooleanToVisibilityConverter.cs" />
     <Compile Include="Convertors\ReverseRotationConverter.cs" />
@@ -143,6 +155,7 @@
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\ImageInfoViewModel.cs" />
     <Compile Include="ViewModels\ImageViewModel.cs" />
+    <Compile Include="ViewModels\ListedPostViewModel.cs" />
     <Compile Include="ViewModels\LocationViewModel.cs" />
     <Compile Include="ViewModels\PostViewModel.cs" />
     <Compile Include="ViewModels\UserViewModel.cs" />
@@ -150,35 +163,35 @@
     <Compile Include="Views\BasicSubPage.xaml.cs">
       <DependentUpon>BasicSubPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\IdeasView.xaml.cs">
-      <DependentUpon>IdeasView.xaml</DependentUpon>
+    <Compile Include="Views\IdeasPage.xaml.cs">
+      <DependentUpon>IdeasPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\EntireMeView.xaml.cs">
-      <DependentUpon>EntireMeView.xaml</DependentUpon>
+    <Compile Include="Views\EntireMePage.xaml.cs">
+      <DependentUpon>EntireMePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\LandingPage.xaml.cs">
       <DependentUpon>LandingPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\MostImportantView.xaml.cs">
-      <DependentUpon>MostImportantView.xaml</DependentUpon>
+    <Compile Include="Views\MostImportantPage.xaml.cs">
+      <DependentUpon>MostImportantPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\ThoughtsView.xaml.cs">
-      <DependentUpon>ThoughtsView.xaml</DependentUpon>
+    <Compile Include="Views\ThoughtsPage.xaml.cs">
+      <DependentUpon>ThoughtsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Partials\SunSetRiseResultView.xaml.cs">
       <DependentUpon>SunSetRiseResultView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\DesiresView.xaml.cs">
-      <DependentUpon>DesiresView.xaml</DependentUpon>
+    <Compile Include="Views\DesiresPage.xaml.cs">
+      <DependentUpon>DesiresPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\SettingsViev.xaml.cs">
       <DependentUpon>SettingsViev.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\FeelingsView.xaml.cs">
-      <DependentUpon>FeelingsView.xaml</DependentUpon>
+    <Compile Include="Views\FeelingsPage.xaml.cs">
+      <DependentUpon>FeelingsPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\AccountView.xaml.cs">
-      <DependentUpon>AccountView.xaml</DependentUpon>
+    <Compile Include="Views\AccountPage.xaml.cs">
+      <DependentUpon>AccountPage.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -210,11 +223,37 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Controls\PostDetailedViewControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\PostEditControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\PostLargePreviewControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\PostPreviewControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Resources\Styles\DefaultStyles.xaml">
+    <Page Include="Resources\Styles\CustomStyles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Page>
+    <Page Include="Resources\Styles\Styles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Page>
+    <Page Include="Resources\Templates\DataTemplates.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -223,11 +262,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\IdeasView.xaml">
+    <Page Include="Views\IdeasPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\EntireMeView.xaml">
+    <Page Include="Views\EntireMePage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -235,11 +274,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\MostImportantView.xaml">
+    <Page Include="Views\MostImportantPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\ThoughtsView.xaml">
+    <Page Include="Views\ThoughtsPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -247,7 +286,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\DesiresView.xaml">
+    <Page Include="Views\DesiresPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -255,18 +294,17 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\FeelingsView.xaml">
+    <Page Include="Views\FeelingsPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\AccountView.xaml">
+    <Page Include="Views\AccountPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Helpers\Parse\" />
-    <Folder Include="Resources\Templates\" />
     <Folder Include="Services\Logic\" />
   </ItemGroup>
   <ItemGroup>

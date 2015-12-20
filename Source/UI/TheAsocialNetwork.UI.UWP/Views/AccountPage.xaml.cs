@@ -17,9 +17,9 @@
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class AccountView : Page
+    public sealed partial class AccountPage : Page
     {
-        public AccountView()
+        public AccountPage()
         {
             this.InitializeComponent();
             this.NavigationCacheMode = NavigationCacheMode.Required;
@@ -171,7 +171,7 @@
             //};
 
 
-            await ParseUser.LogOutAsync();
+         
 
             var sqSservice = new SqLitePostsService();
 
@@ -179,6 +179,7 @@
 
             var postsSql = await sqSservice.GetAllPostsAsync();
 
+            await ParseUser.LogOutAsync();
             var parseService = new ParseAuthenticationService();
             var result = await parseService.LogInAsync("Pesho2", "sraLiDnes123");
 
