@@ -115,7 +115,6 @@
             }
 
             //var dialog = new MessageDialog("Result = " + posts);
-
             //await dialog.ShowAsync();
         }
         

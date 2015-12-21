@@ -99,6 +99,12 @@
 
             if (shell.AppFrame.Content == null)
             {
+                // If the parse user is not logged in - go to the login/register page
+                if (ParseUser.CurrentUser == null)
+                {
+                    shell.AppFrame.Navigate(typeof(IdentityPage), e.Arguments, new Windows.UI.Xaml.Media.Animation.SuppressNavigationTransitionInfo());
+                }
+
                 // When the navigation stack isn't restored, navigate to the first page
                 // suppressing the initial entrance animation.
                 shell.AppFrame.Navigate(typeof(LandingPage), e.Arguments, new Windows.UI.Xaml.Media.Animation.SuppressNavigationTransitionInfo());

@@ -23,11 +23,14 @@
             var sqLitePosts = await this.sqLiteService.GetAllPostsAsync();
             var parsePostsFromSqLite = await this.sqlToPaserConv.ConvertRangeOfPostAsync(sqLitePosts);
 
-            var response = await this.parseServoce.AddNewRangeOfPostAsync(parsePostsFromSqLite);
+            var isOk = await this.parseServoce.AddNewRangeOfPostAsync(parsePostsFromSqLite);
 
-            var deleted =  await this.sqLiteService.DeleteAllPostsAsync();
+            if (isOk)
+            {
+                var deleted = await this.sqLiteService.DeleteAllPostsAsync();
+            }
 
-            return response;
+            return isOk;
         }
     }
 }

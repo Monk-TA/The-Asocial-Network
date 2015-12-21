@@ -187,17 +187,26 @@
     <Compile Include="Views\EntireMePage.xaml.cs">
       <DependentUpon>EntireMePage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\IdentityPage.xaml.cs">
+      <DependentUpon>IdentityPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\ImageFullViewPage.xaml.cs">
       <DependentUpon>ImageFullViewPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\LandingPage.xaml.cs">
       <DependentUpon>LandingPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\LoginPage.xaml.cs">
+      <DependentUpon>LoginPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\MostImportantPage.xaml.cs">
       <DependentUpon>MostImportantPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\PostDetailedPage.xaml.cs">
       <DependentUpon>PostDetailedPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\RegisterPage.xaml.cs">
+      <DependentUpon>RegisterPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\ThoughtsPage.xaml.cs">
       <DependentUpon>ThoughtsPage.xaml</DependentUpon>
@@ -310,6 +319,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Views\IdentityPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\ImageFullViewPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -318,11 +331,19 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Views\LoginPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\MostImportantPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\PostDetailedPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\RegisterPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

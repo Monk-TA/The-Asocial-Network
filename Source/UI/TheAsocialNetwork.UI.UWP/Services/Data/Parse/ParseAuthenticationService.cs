@@ -8,16 +8,27 @@
     public class ParseAuthenticationService
     {
         // TODO: validate input and send notification before use this method
-        public async void RegisterAsync(string username, string password, string emial)
+        public async Task<bool> RegisterAsync(string username, string password, string emial)
         {
-            var newUser = new UserParse()
+            try
             {
-                Username = username,
-                Password = password,
-                Email = emial
-            };
+                var newUser = new UserParse()
+                {
+                    Username = username,
+                    Password = password,
+                    Email = emial
+                };
 
-            await newUser.SignUpAsync();
+                await newUser.SignUpAsync();
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                var msg = ex.Message;
+
+                return false;
+            }
         }
 
         public async Task<bool> RegisterAsync(UserParse user)

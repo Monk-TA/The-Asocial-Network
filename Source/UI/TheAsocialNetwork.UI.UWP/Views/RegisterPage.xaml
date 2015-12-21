@@ -1,0 +1,38 @@
+﻿<Page
+    x:Class="TheAsocialNetwork.UI.UWP.Views.RegisterPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:TheAsocialNetwork.UI.UWP.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <StackPanel VerticalAlignment="Center">
+            <TextBlock x:Name="InvalidInputMessage" 
+                       Text="" 
+                       Style="{StaticResource TextInvalidInput}"
+                      />
+
+            <TextBox x:Name="UserName" 
+                     PlaceholderText="Username"
+                     Style="{StaticResource TextBoxCredentialsStyle}"/>
+
+            <TextBox x:Name="Email" 
+                     PlaceholderText="Email"
+                     Style="{StaticResource TextBoxCredentialsStyle}"/>
+
+            <PasswordBox  x:Name="Password" 
+                          PlaceholderText="Password"
+                          Style="{StaticResource PasswordBoxCredentialsStyle}"/>
+            
+            <PasswordBox  x:Name="ConfirmPassword" 
+                          PlaceholderText="Confirm password"
+                          Style="{StaticResource PasswordBoxCredentialsStyle}"/>
+            <Button 
+                Content="Register" 
+                Click="ButtonRegisterOnClick" 
+                Style="{StaticResource ButtonMarginTenStrechedStyle}"/>
+        </StackPanel>
+    </Grid>
+</Page>
