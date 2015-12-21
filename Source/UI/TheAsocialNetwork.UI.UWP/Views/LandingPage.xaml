@@ -7,22 +7,30 @@
     xmlns:controls="using:TheAsocialNetwork.UI.UWP.Controls"
     mc:Ignorable="d">
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Grid  Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+          EntranceNavigationTransitionInfo.IsTargetElement="True">
         <Grid.RowDefinitions>
+            <RowDefinition Height="48"/>
             <RowDefinition Height="60"/>
             <RowDefinition />
         </Grid.RowDefinitions>
 
-        <TextBlock Grid.Row="0"
+        <controls:PageHeader Grid.Row="0">
+            <controls:PageHeader.HeaderContent>
+                <TextBlock x:Name="title" Style="{ThemeResource PageTitleTextBlockStyle}" Text="SUCCESS"/>
+            </controls:PageHeader.HeaderContent>
+        </controls:PageHeader>
+
+        <TextBlock Grid.Row="1"
             Style="{StaticResource TextBlockSmallHeaderStyle}">
             Welcome
         </TextBlock>
 
-        <TextBlock Grid.Row="1"
+        <TextBlock Grid.Row="2"
                    VerticalAlignment="Top"
             Style="{StaticResource TextBlockFullContentStyle}">
            This is your place,
-            This is you own private network where there is nobody but you and everything is about you.
+            This is your own private network where there is nobody but you and everything is about you.
             Here you can be yourself, be the one you ever wanted.
             There is nothing but you.
             Keep calm and фостата.

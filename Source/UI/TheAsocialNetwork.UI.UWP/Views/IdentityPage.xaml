@@ -9,6 +9,8 @@
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <StackPanel VerticalAlignment="Center">
+            <TextBlock Text="the Asocial Network"
+                Style="{StaticResource TextBlockSmallHeaderStyle}"/>
             <Button Content="LogIn" 
                     Style="{StaticResource ButtonMarginTenStrechedStyle}"
                     Click="ButtonLoginCLick"/>

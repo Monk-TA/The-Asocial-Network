@@ -9,6 +9,9 @@
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <StackPanel VerticalAlignment="Center">
+            <TextBlock Text="Hello again"
+                Style="{StaticResource TextBlockSmallHeaderStyle}"/>
+
             <TextBlock x:Name="InvalidInputMessage" 
                        Text="Password or user name are incorrect. Try again!" 
                        Style="{StaticResource TextInvalidInput}"

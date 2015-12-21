@@ -82,14 +82,15 @@
                     Grid.Column="0"
                     Style="{StaticResource ButtonMarginTenStrechedStyle}"
                     Content="Save" 
-                    Command="{Binding SavePost}"/>
+                    Click="ButtonSaveOnClick"
+                    />
+                    <!--Command="{Binding SavePost}"-->
 
             <Button Grid.Row="4"
                     Grid.Column="1"
                     Style="{StaticResource ButtonMarginTenStrechedStyle}"
-                    Content="Add Image" Command="{Binding AddImage}"/>
-
-
+                    Content="Add Image" 
+                    Command="{Binding AddImage}"/>
         </Grid>
 
     </Border>

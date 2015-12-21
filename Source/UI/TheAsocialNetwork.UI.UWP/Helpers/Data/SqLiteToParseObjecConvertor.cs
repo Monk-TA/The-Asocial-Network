@@ -46,7 +46,7 @@
                 Location = this.ConvertSingleLocation(sqlPost.Location)
             };
 
-            var parseImages = await Task.WhenAll(sqlPost.Images.Select(i => this.ConvertSingleImageAsync(i)));
+            var parseImages = await Task.WhenAll(sqlPost.Images.Select(this.ConvertSingleImageAsync));
 
             if (sqlPost.Images != null)
             {
@@ -57,6 +57,8 @@
             {
                 sqlPost.Videos.ForEach(v => parsePost.AddToList("Videos", this.ConvertSingleVideoAsync(v)));
             }
+
+
 
             return parsePost;
         }

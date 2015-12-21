@@ -9,6 +9,12 @@
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <StackPanel VerticalAlignment="Center">
+            <TextBlock Text="Express yourself"
+                Style="{StaticResource TextBlockSmallHeaderStyle}"/>
+            
+            <TextBlock Text="at the Asocial Network"
+                Style="{StaticResource TextBlockSmallHeaderStyle}"/>
+
             <TextBlock x:Name="InvalidInputMessage" 
                        Text="" 
                        Style="{StaticResource TextInvalidInput}"

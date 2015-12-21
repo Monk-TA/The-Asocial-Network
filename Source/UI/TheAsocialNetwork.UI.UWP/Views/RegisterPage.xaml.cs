@@ -34,7 +34,7 @@
 
             if (succes)
             {
-                this.notifier.ShowSuccessToast("Success, you are now logged in!");
+                // this.notifier.ShowSuccessToast("Success, you are now registered and logged in!");
                 this.SetMainNavigation();
             }
             else

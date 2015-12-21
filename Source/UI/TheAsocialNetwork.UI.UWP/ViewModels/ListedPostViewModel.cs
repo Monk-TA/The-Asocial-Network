@@ -5,13 +5,9 @@
     using System.Collections.ObjectModel;
     using System.Linq;
     using System.Windows.Input;
-    using Windows.UI.Xaml.Media.Imaging;
-    using Parse;
     using TheAsocialNetwork.Common.Extensions;
     using TheAsocialNetwork.UI.UWP.Commands;
-    using TheAsocialNetwork.UI.UWP.Helpers.Data;
     using TheAsocialNetwork.UI.UWP.Services.Data.Parse;
-    using TheAsocialNetwork.UI.UWP.Services.Data.SqLite;
 
     public class ListedPostViewModel : BaseViewModel
     {
@@ -21,10 +17,10 @@
 
         private ICommand getDataommand;
 
-        public ListedPostViewModel(){
-
+        public ListedPostViewModel()
+        {
+            this.HandleGetDataCommand();
         }
-
 
         public ICommand GetData
         {
@@ -43,27 +39,10 @@
         {
             this.IsWaitunForData = true;
 
-          //  var sqSservice = new SqLitePostsService();
-
-            // var sqlResponce = await sqSservice.AddUserWithDatasync(newUser);
-
-          //  var postsSql = await sqSservice.GetAllPostsAsync();
-
-
             try
             {
-
-                await ParseUser.LogOutAsync();
-                var parseService = new ParseAuthenticationService();
-                var result = await parseService.LogInAsync("Pesho2", "sraLiDnes123");
-
                 var postServiceParse = new ParsePostsService();
-                 // var sqlRoParseConv = new SqLiteToParseObjecConvertor();
-
-                 //var parsePostsFromSqLite = await sqlRoParseConv.ConvertSinglePostAsync(postsSql.FirstOrDefault());
-
-                //var response = await postServiceParse.AddNewPostAsync(parsePostsFromSqLite);
-
+             
                 var parsePosts = (await postServiceParse.GetCurrentUserAllPostsAsync());
 
                 if (parsePosts != null)

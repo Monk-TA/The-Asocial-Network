@@ -4,6 +4,7 @@
     using Windows.Foundation;
     using Windows.UI.Xaml;
     using Windows.UI.Xaml.Controls;
+    using TheAsocialNetwork.UI.UWP.Services.Data.Parse;
     using TheAsocialNetwork.UI.UWP.Views;
 
     public sealed partial class PageHeader : UserControl
@@ -52,6 +53,27 @@
                 typeof(AddPostPage),
                 e.OriginalSource,
                 new Windows.UI.Xaml.Media.Animation.DrillInNavigationTransitionInfo());
+        }
+
+        private async void titleBar_DoubleTapped(object sender, Windows.UI.Xaml.Input.DoubleTappedRoutedEventArgs e)
+        {
+            var parseService = new ParseAuthenticationService();
+            var isLoggedOut = await parseService.LogOutAsync();
+
+            if (isLoggedOut)
+            {
+                (Window.Current.Content as AppShell)
+                 .AppFrame
+                 .Navigate(
+                     typeof(IdentityPage),
+                     e.OriginalSource,
+                     new Windows.UI.Xaml.Media.Animation.DrillInNavigationTransitionInfo());
+            }
+        }
+
+        private void titleBar_Holding(object sender, Windows.UI.Xaml.Input.HoldingRoutedEventArgs e)
+        {
+            Windows.System.Launcher.LaunchUriAsync(new Uri("http://www.quotev.com/quiz/961137/The-Psychopath-Test"));
         }
     }
 }

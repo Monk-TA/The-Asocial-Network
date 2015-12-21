@@ -14,7 +14,9 @@
     d:DesignHeight="300"
     d:DesignWidth="400">
     <Grid x:Name="grid" Background="{x:Bind Background}">
-        <Grid x:Name="titleBar">
+        <Grid x:Name="titleBar" 
+              DoubleTapped="titleBar_DoubleTapped"
+              Holding="titleBar_Holding">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition/>

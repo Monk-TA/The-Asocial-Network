@@ -18,12 +18,25 @@ using Windows.UI.Xaml.Navigation;
 namespace TheAsocialNetwork.UI.UWP.Controls
 {
     using TheAsocialNetwork.UI.UWP.ViewModels;
+    using TheAsocialNetwork.UI.UWP.Views;
 
     public sealed partial class AddPostControl : UserControl
     {
         public AddPostControl()
         {
             this.InitializeComponent();
+        }
+
+        private async void ButtonSaveOnClick(object sender, RoutedEventArgs e)
+        {
+            (this.DataContext as AddPostViewModel).HandleSavePostCommand();
+
+            (Window.Current.Content as AppShell)
+                 .AppFrame
+                 .Navigate(
+                     typeof(EntireMePage),
+                     e.OriginalSource,
+                     new Windows.UI.Xaml.Media.Animation.DrillInNavigationTransitionInfo());
 
         }
 

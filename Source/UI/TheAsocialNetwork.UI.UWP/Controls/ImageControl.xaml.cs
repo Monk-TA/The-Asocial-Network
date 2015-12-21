@@ -17,11 +17,28 @@ using Windows.UI.Xaml.Navigation;
 
 namespace TheAsocialNetwork.UI.UWP.Controls
 {
+    using TheAsocialNetwork.UI.UWP.Services.Data.Parse;
+    using TheAsocialNetwork.UI.UWP.Views;
+
     public sealed partial class ImageControl : UserControl
     {
         public ImageControl()
         {
             this.InitializeComponent();
+        }
+
+        private async void UIElement_OnDoubleTapped(object sender, DoubleTappedRoutedEventArgs e)
+        {
+            var ps = new ParsePostsService();
+
+            //  var res = await ps.DeleteImageByPostAndInageId(null, "8FOqVSNnat");
+
+            (Window.Current.Content as AppShell)
+            .AppFrame
+            .Navigate(
+                typeof(ImageFullScreenView),
+                this.DataContext,
+                new Windows.UI.Xaml.Media.Animation.DrillInNavigationTransitionInfo());
         }
     }
 }

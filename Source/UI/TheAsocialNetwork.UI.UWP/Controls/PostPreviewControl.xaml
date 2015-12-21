@@ -11,10 +11,13 @@
 
     <Border Style="{StaticResource BorderRounded}">
         <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Center">
-        <TextBlock Style="{StaticResource TextBlockSmallHeaderStyle}"
+            <TextBlock Style="{StaticResource TextBlockSmallHeaderStyle}"
                        Text="{Binding Title}"/>
-        <TextBlock Style="{StaticResource TextBlockSmallContentStyle}" 
+            <TextBlock Style="{StaticResource TextBlockSmallContentStyle}" 
                        Text="{Binding Content}"/>
+            <Image  Height="100"
+                    Stretch="UniformToFill"
+                    Source="{Binding Images[0].ImageUrl}"/>
         </StackPanel>
     </Border>
 </UserControl>

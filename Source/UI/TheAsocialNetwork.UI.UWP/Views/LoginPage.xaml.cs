@@ -25,13 +25,13 @@
 
             if (succes)
             {
-                notifier.ShowSuccessToast("Success, you are now logged in!");
+                // notifier.ShowSuccessToast("Success, you are now logged in!");
                 this.SetMainNavigation();
             }
             else
             {
                 this.InvalidInputMessage.Visibility = Visibility.Visible;
-                notifier.ShowSuccessToast("Wrong input!");
+                this.notifier.ShowSuccessToast("Wrong input!");
             }
         }
 

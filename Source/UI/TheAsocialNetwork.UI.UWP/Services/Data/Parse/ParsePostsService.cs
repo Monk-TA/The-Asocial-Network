@@ -8,15 +8,21 @@
     using global::Parse;
     using TheAsocialNetwork.UI.UWP.Models;
     using TheAsocialNetwork.UI.UWP.Models.Parse;
+    using TheAsocialNetwork.UI.UWP.Services.Apis;
 
     public class ParsePostsService
     {
+        private NotificationService notifier;
+
+        public ParsePostsService()
+        {
+            this.notifier = new NotificationService();
+        }
+
         public async Task<string> AddNewPostAsync(PostParse newPost)
         {
             try
             {
-               // await this.UploadFiles(newPost.Images);
-
                 var currentUser = (UserParse)ParseUser.CurrentUser;
                 currentUser.AddToList("Posts", newPost);
                 await currentUser.SaveAsync();
@@ -35,8 +41,6 @@
         {
             try
             {
-              //  await Task.WhenAll(newPosts.Select(p => this.UploadFiles(p.Images)));
-
                 var currentUser = (UserParse)ParseUser.CurrentUser;
                 currentUser.AddRangeToList("Posts", newPosts);
                 await currentUser.SaveAsync();
@@ -48,14 +52,6 @@
                 var msg = ex.Message;
 
                 return false;
-            }
-        }
-
-        private async Task UploadFiles(IEnumerable<ImageParse> files)
-        {
-            if (files != null)
-            {
-                await Task.WhenAll(files.Select(f => f.ImageInfo.SaveAsync()));
             }
         }
 
@@ -132,7 +128,28 @@
             {
                 var msg = ex.Message;
 
+               // this.notifier.ShowErrorToastWithDismissButton(msg);
+
                 return null;
+            }
+        }
+
+        public async Task<bool> DeleteImageByPostAndInageId(string imageId, string postId)
+        {
+            try
+            {
+                var q = new ParseQuery<ImageParse>();
+                var post = await q.GetAsync(postId);
+
+                await post.DeleteAsync();
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                var msg = ex.Message;
+
+                return false;
             }
         }
     }

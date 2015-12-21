@@ -4,6 +4,7 @@
     using System.Collections.Generic;
     using System.Collections.ObjectModel;
     using System.IO;
+    using System.Threading.Tasks;
     using System.Windows.Input;
     using TheAsocialNetwork.Common.Extensions;
     using TheAsocialNetwork.UI.UWP.Commands;
@@ -33,18 +34,18 @@
             this.notificator = new NotificationService();
         }
 
-        public ICommand SavePost
-        {
-            get
-            {
-                if (this.savePostCommand == null)
-                {
-                    this.savePostCommand = new RelayCommand(this.HandleSavePostCommand);
-                }
+        //public ICommand SavePost
+        //{
+        //    get
+        //    {
+        //        if (this.savePostCommand == null)
+        //        {
+        //            this.savePostCommand = new RelayCommand(this.HandleSavePostCommand);
+        //        }
 
-                return this.savePostCommand;
-            }
-        }
+        //        return this.savePostCommand;
+        //    }
+        //}
 
         public ICommand AddImage
         {
@@ -95,7 +96,7 @@
             }
         }
 
-        private async void HandleSavePostCommand()
+        public async Task HandleSavePostCommand()
         {
 
             this.Post.Images = this.Images;
@@ -117,7 +118,7 @@
             //var dialog = new MessageDialog("Result = " + posts);
             //await dialog.ShowAsync();
         }
-        
+
         public PostViewModel Post
         {
             get

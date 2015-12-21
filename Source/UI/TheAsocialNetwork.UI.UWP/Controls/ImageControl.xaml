@@ -12,9 +12,12 @@
     <Border 
         Background="{ThemeResource ApplicationForegroundThemeBrush}"
         Padding="0, 3">
-        <Viewbox Margin="0">
+        <Viewbox x:Name="vbImageBox"
+            Margin="0"
+                 DoubleTapped="UIElement_OnDoubleTapped">
             <Image Margin="0" 
                    Source="{Binding ImageUrl}" />
         </Viewbox>
     </Border>
+    
 </UserControl>
