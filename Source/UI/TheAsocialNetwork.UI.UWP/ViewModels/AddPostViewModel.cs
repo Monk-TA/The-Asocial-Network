@@ -13,6 +13,8 @@
     using TheAsocialNetwork.UI.UWP.Services.Data.Common;
     using Windows.Media.Capture;
     using Windows.UI.Popups;
+    using TheAsocialNetwork.UI.UWP.Helpers.Contracts;
+    using TheAsocialNetwork.UI.UWP.Services.Contracts;
 
     public class AddPostViewModel : BaseViewModel
     {
@@ -23,15 +25,20 @@
         private ICommand savePostCommand;
         private ICommand addImageCommand;
 
-        private ViewModelToSqlVodelConvertor postToSqlModel;
-        private SqLiteToParseUploadService sqlToParse;
-        private NotificationService notificator;
+        private IViewModelToSqlVodelConvertor postToSqlModel;
+        private ISqLiteToParseUploadService sqlToParse;
+        private INotificationService notificator;
 
         public AddPostViewModel()
+            : this(new ViewModelToSqlVodelConvertor(), new SqLiteToParseUploadService(), new NotificationService())
         {
-            this.postToSqlModel = new ViewModelToSqlVodelConvertor();
-            this.sqlToParse = new SqLiteToParseUploadService();
-            this.notificator = new NotificationService();
+        }
+
+        public AddPostViewModel(IViewModelToSqlVodelConvertor post, ISqLiteToParseUploadService sqlToPar, INotificationService notific)
+        {
+            this.postToSqlModel = post;
+            this.sqlToParse = sqlToPar;
+            this.notificator = notific;
         }
 
         //public ICommand SavePost

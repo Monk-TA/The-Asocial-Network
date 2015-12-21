@@ -3,21 +3,27 @@
     using System.Collections.Generic;
     using System.Threading.Tasks;
     using TheAsocialNetwork.Common.Extensions;
+    using TheAsocialNetwork.UI.UWP.Helpers.Contracts;
     using TheAsocialNetwork.UI.UWP.Models.SqLite;
     using TheAsocialNetwork.UI.UWP.Services.Apis;
+    using TheAsocialNetwork.UI.UWP.Services.Contracts;
     using TheAsocialNetwork.UI.UWP.Services.Data.SqLite;
     using TheAsocialNetwork.UI.UWP.ViewModels;
 
-    public class ViewModelToSqlVodelConvertor
+    public class ViewModelToSqlVodelConvertor : IViewModelToSqlVodelConvertor
     {
-
-        private GeolocationService geolocationService;
-        private SqLitePostsService sqLiteService;
+        private IGeolocationService geolocationService;
+        private ISqLitePostsService sqLiteService;
 
         public ViewModelToSqlVodelConvertor()
+            : this(new GeolocationService(), new SqLitePostsService())
         {
-            this.geolocationService = new GeolocationService();
-            this.sqLiteService = new SqLitePostsService();
+        }
+
+        public ViewModelToSqlVodelConvertor(IGeolocationService geoServ, ISqLitePostsService sqltServ)
+        {
+            this.geolocationService = geoServ;
+            this.sqLiteService = sqltServ;
         }
 
         public async Task<int> ConvertSinglePostAsync(PostViewModel sqlPost)

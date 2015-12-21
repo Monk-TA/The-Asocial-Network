@@ -1,21 +1,28 @@
 ﻿namespace TheAsocialNetwork.UI.UWP.Services.Data.Common
 {
     using System.Threading.Tasks;
+    using TheAsocialNetwork.UI.UWP.Helpers.Contracts;
     using TheAsocialNetwork.UI.UWP.Helpers.Data;
+    using TheAsocialNetwork.UI.UWP.Services.Contracts;
     using TheAsocialNetwork.UI.UWP.Services.Data.Parse;
     using TheAsocialNetwork.UI.UWP.Services.Data.SqLite;
 
-    public class SqLiteToParseUploadService
+    public class SqLiteToParseUploadService : ISqLiteToParseUploadService
     {
-        private ParsePostsService parseServoce;
-        private SqLitePostsService sqLiteService;
-        private SqLiteToParseObjecConvertor sqlToPaserConv;
+        private IParsePostsService parseServoce;
+        private ISqLitePostsService sqLiteService;
+        private ISqLiteToParseObjecConvertor sqlToPaserConv;
 
         public SqLiteToParseUploadService()
+            : this(new ParsePostsService(), new SqLitePostsService(), new SqLiteToParseObjecConvertor())
         {
-            this.parseServoce = new ParsePostsService();
-            this.sqLiteService = new SqLitePostsService();
-            this.sqlToPaserConv = new SqLiteToParseObjecConvertor();
+        }
+
+        public SqLiteToParseUploadService(IParsePostsService parse, ISqLitePostsService sqLite, ISqLiteToParseObjecConvertor sqlToPase)
+        {
+            this.parseServoce = parse;
+            this.sqLiteService = sqLite;
+            this.sqlToPaserConv = sqlToPase;
         }
 
         public async Task<bool> UploudNewPostToParseAsync()

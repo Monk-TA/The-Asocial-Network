@@ -4,15 +4,22 @@
     using System.Threading.Tasks;
     using Windows.Devices.Geolocation;
     using Windows.Services.Maps;
+    using TheAsocialNetwork.UI.UWP.Helpers.Contracts;
     using TheAsocialNetwork.UI.UWP.Helpers.Geolocator;
+    using TheAsocialNetwork.UI.UWP.Services.Contracts;
 
-    public class GeolocationService
+    public class GeolocationService : IGeolocationService
     {
-        private GeoLocatorHelper geolocatorHelper;
+        private IGeoLocatorHelper geolocatorHelper;
 
         public GeolocationService()
+            :this(new GeoLocatorHelper())
         {
-            this.geolocatorHelper = new GeoLocatorHelper();
+        }
+
+        public GeolocationService(IGeoLocatorHelper geolocator)
+        {
+            this.geolocatorHelper = geolocator;
         }
 
         public async Task<MapAddress> GetCurrentCivilAddresByLocationAsync()

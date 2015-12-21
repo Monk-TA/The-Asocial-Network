@@ -5,17 +5,24 @@
     using TheAsocialNetwork.UI.UWP.Services.Apis;
     using Windows.Devices.Geolocation;
     using Windows.Services.Maps;
+    using TheAsocialNetwork.UI.UWP.Helpers.Contracts;
+    using TheAsocialNetwork.UI.UWP.Services.Contracts;
 
-    public class GeoLocatorHelper
+    public class GeoLocatorHelper : IGeoLocatorHelper
     {
-        private NotificationService notificator;
+        private INotificationService notificator;
 
         public GeoLocatorHelper()
+            : this(new NotificationService())
         {
-            this.notificator = new NotificationService();
         }
 
-        public async Task<Geoposition> HandeleAccessStatus(  GeolocationAccessStatus accessStatus)
+        public GeoLocatorHelper(INotificationService notific)
+        {
+            this.notificator = notific;
+        }
+
+        public async Task<Geoposition> HandeleAccessStatus(GeolocationAccessStatus accessStatus)
         {
             Geoposition geoposition = null;
 
@@ -58,7 +65,7 @@
             // Reverse geocode the specified geographic location.
             MapLocationFinderResult result = await MapLocationFinder.FindLocationsAtAsync(pointToReverseGeocode);
 
-            MapAddress addres = null; 
+            MapAddress addres = null;
 
             if (result != null && result.Locations != null && result.Locations.Count > 0)
             {

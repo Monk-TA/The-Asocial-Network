@@ -9,8 +9,9 @@
     using TheAsocialNetwork.UI.UWP.Models;
     using TheAsocialNetwork.UI.UWP.Models.Parse;
     using TheAsocialNetwork.UI.UWP.Services.Apis;
+    using TheAsocialNetwork.UI.UWP.Services.Contracts;
 
-    public class ParsePostsService
+    public class ParsePostsService : IParsePostsService
     {
         private NotificationService notifier;
 

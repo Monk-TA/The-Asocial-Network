@@ -8,15 +8,22 @@ namespace TheAsocialNetwork.UI.UWP.Services.Apis
 {
     using Windows.UI.Notifications;
     using NotificationsExtensions.Toasts;
+    using TheAsocialNetwork.UI.UWP.Helpers.Contracts;
     using TheAsocialNetwork.UI.UWP.Helpers.ToastNotifications;
+    using TheAsocialNetwork.UI.UWP.Services.Contracts;
 
-    public class NotificationService
+    public class NotificationService : INotificationService
     {
-        private ToastCrerator toaster;
+        private IToastCrerator toaster;
 
         public NotificationService()
+            :this(new ToastCrerator())
         {
-            this.toaster = new ToastCrerator();
+        }
+
+        public NotificationService(IToastCrerator toast)
+        {
+            this.toaster = toast;
         }
 
         public void ShowSuccessToast(string message)

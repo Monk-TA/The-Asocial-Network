@@ -3,8 +3,9 @@
     using System;
     using System.Threading.Tasks;
     using global::Parse;
+    using TheAsocialNetwork.UI.UWP.Services.Contracts;
 
-    public class ParseFilesService
+    public class ParseFilesService : IParseFilesService
     {
         public async Task<ParseFile> UploadFileAsync(ParseFile file)
         {

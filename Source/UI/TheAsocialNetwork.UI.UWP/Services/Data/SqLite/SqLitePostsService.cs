@@ -5,8 +5,9 @@
     using System.Threading.Tasks;
     using SQLiteNetExtensionsAsync.Extensions;
     using TheAsocialNetwork.UI.UWP.Models.SqLite;
+    using TheAsocialNetwork.UI.UWP.Services.Contracts;
 
-    public class SqLitePostsService : SqlConnectionService
+    public class SqLitePostsService : SqlConnectionService, ISqLitePostsService
     {
         public async Task<int> AddNewPostAsync(PostSql newPost)
         {

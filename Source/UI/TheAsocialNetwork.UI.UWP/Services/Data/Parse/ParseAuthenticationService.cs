@@ -4,8 +4,9 @@
     using System.Threading.Tasks;
     using global::Parse;
     using TheAsocialNetwork.UI.UWP.Models.Parse;
+    using TheAsocialNetwork.UI.UWP.Services.Contracts;
 
-    public class ParseAuthenticationService
+    public class ParseAuthenticationService : IParseAuthenticationService
     {
         // TODO: validate input and send notification before use this method
         public async Task<bool> RegisterAsync(string username, string password, string emial)
@@ -78,6 +79,5 @@
                 return false;
             }
         }
-
     }
 }

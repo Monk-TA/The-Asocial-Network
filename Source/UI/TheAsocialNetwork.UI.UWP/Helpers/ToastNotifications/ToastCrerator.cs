@@ -4,8 +4,9 @@
     using System.Linq;
     using NotificationsExtensions.Toasts;
     using TheAsocialNetwork.Common.Extensions;
+    using TheAsocialNetwork.UI.UWP.Helpers.Contracts;
 
-    public class ToastCrerator
+    public class ToastCrerator : IToastCrerator
     {
         public ToastVisual GetVisualToast(
             string title,

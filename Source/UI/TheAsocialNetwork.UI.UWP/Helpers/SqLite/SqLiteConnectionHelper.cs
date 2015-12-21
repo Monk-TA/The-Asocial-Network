@@ -8,9 +8,10 @@
     using SQLite.Net.Platform.WinRT;
 
     using Windows.Storage;
+    using TheAsocialNetwork.UI.UWP.Helpers.Contracts;
     using TheAsocialNetwork.UI.UWP.Models.SqLite;
 
-    public class SqLiteConnectionHelper
+    public class SqLiteConnectionHelper : ISqLiteConnectionHelper
     {
         public SQLiteAsyncConnection GetDbConnectionAsync()
         {

@@ -132,10 +132,15 @@
     <Compile Include="Convertors\BooleanToVisibilityConverter.cs" />
     <Compile Include="Convertors\InverseBooleanToVisibilityConverter.cs" />
     <Compile Include="Convertors\ReverseRotationConverter.cs" />
+    <Compile Include="Helpers\Contracts\ISqLiteToParseObjecConvertor.cs" />
+    <Compile Include="Helpers\Contracts\IViewModelToSqlVodelConvertor.cs" />
     <Compile Include="Helpers\Data\SqLiteToParseObjecConvertor.cs" />
     <Compile Include="Helpers\Data\ViewModelToSqlVodelConvertor.cs" />
     <Compile Include="Helpers\Geolocator\GeoLocatorHelper.cs" />
+    <Compile Include="Helpers\Contracts\ISqLiteConnectionHelper.cs" />
+    <Compile Include="Helpers\Contracts\IGeoLocatorHelper.cs" />
     <Compile Include="Helpers\SqLite\SqLiteConnectionHelper.cs" />
+    <Compile Include="Helpers\Contracts\IToastCrerator.cs" />
     <Compile Include="Helpers\ToastNotifications\ToastCrerator.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
@@ -157,12 +162,20 @@
     <Compile Include="NavMenuItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\Apis\GeolocationService.cs" />
+    <Compile Include="Services\Contracts\IGeolocationService.cs" />
+    <Compile Include="Services\Contracts\INotificationService.cs" />
     <Compile Include="Services\Apis\NotificationService.cs" />
+    <Compile Include="Services\Contracts\ISqLiteToParseUploadService.cs" />
     <Compile Include="Services\Data\Common\SqLiteToParseUploadService.cs" />
+    <Compile Include="Services\Contracts\IParseAuthenticationService.cs" />
+    <Compile Include="Services\Contracts\IParseFilesService.cs" />
+    <Compile Include="Services\Contracts\IParsePostsService.cs" />
     <Compile Include="Services\Data\Parse\ParseAuthenticationService.cs" />
     <Compile Include="Services\Data\Parse\ParseFilesService.cs" />
     <Compile Include="Services\Data\Parse\ParsePostsService.cs" />
     <Compile Include="Services\Data\Parse\ParseUserService.cs" />
+    <Compile Include="Services\Contracts\ISqlConnectionService.cs" />
+    <Compile Include="Services\Contracts\ISqLitePostsService.cs" />
     <Compile Include="Services\Data\SqLite\SqlConnectionService.cs" />
     <Compile Include="Services\Data\SqLite\SqLitePostsService.cs" />
     <Compile Include="ViewModels\AccountViewModel.cs" />

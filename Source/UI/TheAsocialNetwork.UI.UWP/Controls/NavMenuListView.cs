@@ -87,6 +87,7 @@
             for (int i = 0; i < this.Items.Count; i++)
             {
                 var lvi = (ListViewItem)this.ContainerFromIndex(i);
+
                 if (lvi != null)
                 {
                     if (i != index)

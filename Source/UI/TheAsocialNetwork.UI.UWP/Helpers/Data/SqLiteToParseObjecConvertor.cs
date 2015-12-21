@@ -7,15 +7,22 @@
     using TheAsocialNetwork.UI.UWP.Models.SqLite;
     using Parse;
     using Common.Extensions;
+    using TheAsocialNetwork.UI.UWP.Helpers.Contracts;
+    using TheAsocialNetwork.UI.UWP.Services.Contracts;
     using TheAsocialNetwork.UI.UWP.Services.Data.Parse;
 
-    public class SqLiteToParseObjecConvertor
+    public class SqLiteToParseObjecConvertor : ISqLiteToParseObjecConvertor
     {
-        private ParseFilesService parseFilesService;
+        private IParseFilesService parseFilesService;
 
         public SqLiteToParseObjecConvertor()
+            :this(new ParseFilesService())
         {
-            this.parseFilesService = new ParseFilesService();
+        }
+
+        public SqLiteToParseObjecConvertor(IParseFilesService service)
+        {
+            this.parseFilesService = service;
         }
 
         public async Task<IEnumerable<PostParse>> ConvertRangeOfPostAsync(IEnumerable<PostSql> sqlPosts)
